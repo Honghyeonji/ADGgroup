@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1600</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 212, 190);</string>
+  </property>
+  <widget class="QLabel" name="player1Name">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>60</y>
+     <width>401</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 20pt &quot;남양주 다산 B&quot;;</string>
+   </property>
+   <property name="text">
+    <string>국민대쿠민이</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="player2Name">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>240</y>
+     <width>401</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 20pt &quot;남양주 다산 B&quot;;</string>
+   </property>
+   <property name="text">
+    <string>국민대국냥이</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>40</y>
+     <width>700</width>
+     <height>700</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="player2Wait">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>280</y>
+     <width>400</width>
+     <height>120</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="player1Wait">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>100</y>
+     <width>400</width>
+     <height>120</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="moveButton">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>420</y>
+     <width>230</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+font: 25pt &quot;남양주 다산 B&quot;;</string>
+   </property>
+   <property name="text">
+    <string>말 이동</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="randomYut">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>530</y>
+     <width>230</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+font: 25pt &quot;남양주 다산 B&quot;;</string>
+   </property>
+   <property name="text">
+    <string>윷던지기</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="yutResult">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>660</y>
+     <width>221</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 20pt &quot;남양주 다산 B&quot;;</string>
+   </property>
+   <property name="text">
+    <string>(결과)</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="howToPlay">
+   <property name="geometry">
+    <rect>
+     <x>1180</x>
+     <y>40</y>
+     <width>381</width>
+     <height>731</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 20pt &quot;남양주 다산 M&quot;;</string>
+   </property>
+   <property name="text">
+    <string>게임방법</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>750</y>
+     <width>501</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>글꼴 출처:남양주다산체, thanks to:</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget_5">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>610</y>
+     <width>2</width>
+     <height>2</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="player1_1Wait_5"/>
+  </widget>
+  <widget class="QLabel" name="player0_0Wait">
+   <property name="geometry">
+    <rect>
+     <x>765</x>
+     <y>120</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="player0_1Wait">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>120</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="player0_2Wait">
+   <property name="geometry">
+    <rect>
+     <x>955</x>
+     <y>120</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="player0_3Wait">
+   <property name="geometry">
+    <rect>
+     <x>1050</x>
+     <y>120</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="player1_3Wait">
+   <property name="geometry">
+    <rect>
+     <x>1050</x>
+     <y>300</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="player1_0Wait">
+   <property name="geometry">
+    <rect>
+     <x>765</x>
+     <y>300</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="player1_1Wait">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>300</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="player1_2Wait">
+   <property name="geometry">
+    <rect>
+     <x>955</x>
+     <y>300</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can0_4">
+   <property name="geometry">
+    <rect>
+     <x>627</x>
+     <y>64</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can0_3">
+   <property name="geometry">
+    <rect>
+     <x>637</x>
+     <y>171</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can0_2">
+   <property name="geometry">
+    <rect>
+     <x>636</x>
+     <y>286</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can0_1">
+   <property name="geometry">
+    <rect>
+     <x>635</x>
+     <y>405</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can3_4">
+   <property name="geometry">
+    <rect>
+     <x>627</x>
+     <y>635</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can0_0">
+   <property name="geometry">
+    <rect>
+     <x>636</x>
+     <y>527</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can2_4">
+   <property name="geometry">
+    <rect>
+     <x>48</x>
+     <y>635</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can3_0">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>641</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can3_1">
+   <property name="geometry">
+    <rect>
+     <x>278</x>
+     <y>641</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can3_2">
+   <property name="geometry">
+    <rect>
+     <x>399</x>
+     <y>641</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can3_3">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>641</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can2_3">
+   <property name="geometry">
+    <rect>
+     <x>49</x>
+     <y>530</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can2_2">
+   <property name="geometry">
+    <rect>
+     <x>49</x>
+     <y>409</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can2_1">
+   <property name="geometry">
+    <rect>
+     <x>49</x>
+     <y>291</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can2_0">
+   <property name="geometry">
+    <rect>
+     <x>49</x>
+     <y>175</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can1_4">
+   <property name="geometry">
+    <rect>
+     <x>48</x>
+     <y>70</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can1_0">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>63</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can1_2">
+   <property name="geometry">
+    <rect>
+     <x>268</x>
+     <y>63</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can1_3">
+   <property name="geometry">
+    <rect>
+     <x>151</x>
+     <y>63</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can1_1">
+   <property name="geometry">
+    <rect>
+     <x>394</x>
+     <y>63</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="canMain">
+   <property name="geometry">
+    <rect>
+     <x>338</x>
+     <y>350</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can4_1">
+   <property name="geometry">
+    <rect>
+     <x>431</x>
+     <y>254</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can4_0">
+   <property name="geometry">
+    <rect>
+     <x>525</x>
+     <y>160</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can6_0">
+   <property name="geometry">
+    <rect>
+     <x>436</x>
+     <y>450</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can6_1">
+   <property name="geometry">
+    <rect>
+     <x>529</x>
+     <y>544</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can7_0">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>450</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can7_1">
+   <property name="geometry">
+    <rect>
+     <x>147</x>
+     <y>544</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can5_1">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>250</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="can5_0">
+   <property name="geometry">
+    <rect>
+     <x>147</x>
+     <y>156</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>background</zorder>
+  <zorder>player1Name</zorder>
+  <zorder>player2Name</zorder>
+  <zorder>player2Wait</zorder>
+  <zorder>player1Wait</zorder>
+  <zorder>moveButton</zorder>
+  <zorder>randomYut</zorder>
+  <zorder>yutResult</zorder>
+  <zorder>howToPlay</zorder>
+  <zorder>label_8</zorder>
+  <zorder>verticalLayoutWidget_5</zorder>
+  <zorder>player0_0Wait</zorder>
+  <zorder>player0_1Wait</zorder>
+  <zorder>player0_2Wait</zorder>
+  <zorder>player0_3Wait</zorder>
+  <zorder>player1_3Wait</zorder>
+  <zorder>player1_0Wait</zorder>
+  <zorder>player1_1Wait</zorder>
+  <zorder>player1_2Wait</zorder>
+  <zorder>can0_4</zorder>
+  <zorder>can0_3</zorder>
+  <zorder>can0_2</zorder>
+  <zorder>can0_1</zorder>
+  <zorder>can3_4</zorder>
+  <zorder>can0_0</zorder>
+  <zorder>can2_4</zorder>
+  <zorder>can3_0</zorder>
+  <zorder>can3_1</zorder>
+  <zorder>can3_2</zorder>
+  <zorder>can3_3</zorder>
+  <zorder>can2_3</zorder>
+  <zorder>can2_2</zorder>
+  <zorder>can2_1</zorder>
+  <zorder>can2_0</zorder>
+  <zorder>can1_4</zorder>
+  <zorder>can1_0</zorder>
+  <zorder>can1_2</zorder>
+  <zorder>can1_3</zorder>
+  <zorder>can1_1</zorder>
+  <zorder>canMain</zorder>
+  <zorder>can4_1</zorder>
+  <zorder>can4_0</zorder>
+  <zorder>can6_0</zorder>
+  <zorder>can6_1</zorder>
+  <zorder>can7_0</zorder>
+  <zorder>can7_1</zorder>
+  <zorder>can5_1</zorder>
+  <zorder>can5_0</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
