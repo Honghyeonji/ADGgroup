@@ -8,10 +8,12 @@ import sys
 
 #UI파일 연결
 #단, UI파일은 Python 코드 파일과 같은 디렉토리에 위치해야한다.
-form_class = uic.loadUiType("practice.ui")[0]
+
+formWaiting = uic.loadUiType("waiting.ui")[0]
+formGame = uic.loadUiType("practice.ui")[0]
 
 #화면을 띄우는데 사용되는 Class 선언
-class WindowClass(QMainWindow, form_class) :
+class WindowClass(QMainWindow, formGame) :
     def __init__(self) :
         super().__init__()
         self.setupUi(self)
@@ -20,7 +22,7 @@ class WindowClass(QMainWindow, form_class) :
         self.background.setStyleSheet('image:url(backgroundEx.png)')
         # 플레이어 말 이미지 설정
         self.player = [['image:url(player1_1.png)', 'image:url(player1_2.png)', 'image:url(player1_3.png)', 'image:url(player1_4.png)'],
-                  ['image:url(player2_1.png)', 'image:url(player2_2.png)', 'image:url(player2_3.png)', 'image:url(player2_4.png)']]
+                       ['image:url(player2_1.png)', 'image:url(player2_2.png)', 'image:url(player2_3.png)', 'image:url(player2_4.png)']]
         # 플레이어 말 대기 칸
         self.playerWait = [[self.player0_0Wait, self.player0_1Wait, self.player0_2Wait, self.player0_3Wait],
                       [self.player1_0Wait, self.player1_1Wait, self.player1_2Wait, self.player1_3Wait]]

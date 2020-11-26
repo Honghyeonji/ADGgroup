@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 212, 190);</string>
   </property>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="inputName">
    <property name="geometry">
     <rect>
      <x>250</x>
@@ -33,7 +33,7 @@ font: 64pt &quot;남양주 다산 M&quot;;</string>
     <string>닉네임을 입력하세요</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="goGameButton">
    <property name="geometry">
     <rect>
      <x>930</x>
