@@ -22,6 +22,7 @@ class WindowClass(QMainWindow, formGame) :
         self.p2 = yut.Player()
 
         # p1, p2 닉네임 입력창
+        # 일단 위의 입력칸이 플레이어1의 닉네임, 아래 입력칸이 플레이어2의 닉네임입니다. 추후에 디자인 수정하겠습니다.
         inputchang = Nameinput.NameInput()
         r = inputchang.showModel()
         if r:
@@ -65,14 +66,14 @@ class WindowClass(QMainWindow, formGame) :
         #               [self.can6_0, self.can6_1],
         #               [self.can7_0, self.can7_1]]
 
-        self.cans = { '00':self.can0_0, '01':self.can0_1, '02':self.can0_2, '03':self.can0_3,
-                      '10':self.can1_0, '11':self.can1_1, '12':self.can1_2, '13':self.can1_3,
-                      '21':self.can2_0, '22':self.can2_1, '33':self.can2_2, '34':self.can2_3,
-                      '31':self.can3_0, '32':self.can3_1, '43':self.can3_2, '44':self.can3_3,
-                      '41':self.can4_0, '42':self.can4_1,
-                      '51':self.can5_0, '52':self.can5_1,
-                      '61':self.can6_0, '62':self.can6_1,
-                      '71':self.can7_0, '72':self.can7_1, }
+        self.cans = { '00':self.can0_0, '01':self.can0_1, '02':self.can0_2, '03':self.can0_3, '04':self.can0_4,
+                      '10':self.can1_0, '11':self.can1_1, '12':self.can1_2, '13':self.can1_3, '14':self.can1_4,
+                      '20':self.can2_0, '21':self.can2_1, '22':self.can2_2, '23':self.can2_3, '24':self.can2_4,
+                      '30':self.can3_0, '31':self.can3_1, '32':self.can3_2, '33':self.can3_3, '34':self.can3_4,
+                      '40':self.can4_0, '41':self.can4_1,
+                      '50':self.can5_0, '51':self.can5_1,
+                      '60':self.can6_0, '61':self.can6_1,
+                      '70':self.can7_0, '71':self.can7_1, }
         self.canMain.setStyleSheet(self.emptyCan)
         for key, vaule in self.cans.items():
             self.cans[key].setStyleSheet(self.emptyCan)
@@ -95,7 +96,7 @@ class WindowClass(QMainWindow, formGame) :
         self.moveButton.clicked.connect(self.MoveButtonClicked)
         self.randomYut.clicked.connect(self.RandomYutButtonClicked)
 
-        self.trun = 1
+        self.turn = 1
         self.playerTurn.setText("현재 차례: " + str(self.turn))
 
             # 윷 던지고 말 이동하기
