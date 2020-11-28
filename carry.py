@@ -19,8 +19,8 @@ goal 지점에서 이미지 검사로 스코어 증가?
 이미 2~3개를 업은 상태에서 2~1개를 더 업는다면?
 '''
 
-def upgi(self, nowP, mapP):  # nowP : 현재 움직일 말, mapP : 현재 맵 좌표에 있는 말
-    if nowP == self.player1_1:
+def upgi(self, mapP):  # nowP : 현재 움직일 말, mapP : 현재 맵 좌표에 있는 말
+    if self. == self.player1_1:
         if mapP == self.player1_2:
             # 이미지에 따라 도착지점에서 올라갈 스코어 확인?
             self.player1_1 = self.yutArray[0][0] # 1번째 말은 2번째 말에 업은 것 처럼 보이지만 맵 처음으로 돌려보냄.
@@ -125,13 +125,228 @@ def upgi(self, nowP, mapP):  # nowP : 현재 움직일 말, mapP : 현재 맵 �
         elif mapP == self.player2_3:
             self.nowP = self.yutArray[0][0]
             upgi_img(mapP)
+    else:
+        continue
 
 
-#def upgi_img(self,nowP, mapP):
-    # 말 2개가 업혀진 이미지 변경 ex)image:url('upgi2.png')
+def upgi_img(self,mapP):
+    #말 2개가 업혀진 이미지 변경 ex)image:url('upgi2.png')
+    if self.image == self.player1img[1]:
+        if mapP.image == self.player1img[2]:
+            self.image = self.player1img[12]
+        elif mapP.image == self.player1img[3]:
+            self.image = self.player1img[13]
+        elif mapP.image == self.player1img[4]:
+            self.image = self.player1img[14]
+        elif mapP.image == self.player1img[23]:
+            self.image = self.player1img[123]
+        elif mapP.image == self.player1img[34]:
+            self.image = self.player1img[134]
+        else:
+            self.image = self.player1img[1234]
 
-        # if image == 'image:url(player1_1.png)': #만약 플레이어가 아무것도 업지 않은 상태라면
-            # image = 'image:url(upgi2.png) # 1개 업은 이미지로 변경
-            # elif image == 'image:url(upgi2.png)': # 만약 플레이어가 이미 1개를 업은 상태라면
-            # image = 'image:url(upgi3.png)' # 2개 업은 이미지로 변경
+    elif self.image == self.player1img[2]:
+        if mapP.image == self.player1img[1]:
+            self.image = self.player1img[12]
+        elif mapP.image == self.player1img[3]:
+            self.image = self.player1img[23]
+        elif mapP.image == self.player1img[4]:
+            self.image = self.player1img[24]
+
+        elif mapP.image == self.player1img[13]:
+            self.image = self.player1img[123]
+        elif mapP.image == self.player1img[34]:
+            self.image = self.player1img[234]
+        else:
+            self.image = self.player1img[1234]
+    
+    elif self.image == self.player1img[3]:
+        if mapP.image == self.player1img[1]:
+            self.image = self.player1img[13]
+        elif mapP.image == self.player1img[2]:
+            self.image = self.player1img[23]
+        elif mapP.image == self.player1img[4]:
+            self.image = self.player1img[34]
+
+        elif mapP.image == self.player1img[12]:
+            self.image = self.player1img[123]
+        elif mapP.image == self.player1img[14]:
+            self.image = self.player1img[134]
+        else:
+            self.image = self.player1img[1234]
+
+    elif self.image == self.player1img[4]:
+        if mapP.image == self.player1img[1]:
+            self.image = self.player1img[14]
+        elif mapP.image == self.player1img[2]:
+            self.image = self.player1img[24]
+        elif mapP.image == self.player1img[3]:
+            self.image = self.player1img[34]
+
+        elif mapP.image == self.player1img[23]:
+            self.image = self.player1img[234]
+        elif mapP.image == self.player1img[13]:
+            self.image = self.player1img[134]
+        else:
+            self.image = self.player1img[1234]
+
+    # 3개 업는 부분 =================================
+
+    elif self.image == self.player1img[12]:
+        if mapP.image == self.player1img[3] or mapP.image == self.player1img[4]:
+            self.image = self.player1img[123]
+        else:
+            self.image = self.player1img[1234]
+
+    elif self.image == self.player1img[13]:
+        if mapP.image == self.player1img[2]:
+            self.image = self.player1img[123]
+        elif mapP.image == self.player1img[4]:
+            self.image = self.player1img[134]
+        else:
+            self.image = self.player1img[1234]
+
+    elif self.image == self.player1img[14]:
+        if mapP.image == self.player1img[3]:
+            self.image = self.player1img[134]
+        else:
+            self.image = self.player1img[1234]
+
+    elif self.image == self.player1img[23]:
+        if mapP.image == self.player1img[1]:
+            self.image = self.player1img[123]
+        elif mapP.image == self.player1img[4]:
+            self.image = self.player1img[234]
+        else:
+            self.image = self.player1img[1234]
+
+    elif self.image == self.player1img[24]:
+        if mapP.image == self.player1img[3]:
+            self.image = self.player1img[234]
+        else:
+            self.image = self.player1img[1234]
+
+    elif self.image == self.player1img[34]:
+        if mapP.image == self.player1img[1]:
+            self.image = self.player1img[134]
+        elif mapP.image == self.player1img[2]:
+            self.image = self.player1img[234]
+        else:
+            self.image = self.player1img[1234]
+        
+
+     # 4개 업는 부분 ===================================
+    elif self.image == self.player1img[123] or self.image == self.player1img[134] or self.image == self.player1img[234]:
+         self.image = self.player1img[1234]
+    
+
+    # === player2 ===
+    elif self.image == self.player2img[1]:
+        if mapP.image == self.player2img[2]:
+            self.image = self.player2img[12]
+        elif mapP.image == self.player2img[3]:
+            self.image = self.player2img[13]
+        elif mapP.image == self.player2img[4]:
+            self.image = self.player2img[14]
+        elif mapP.image == self.player2img[23]:
+            self.image = self.player2img[123]
+        elif mapP.image == self.player2img[34]:
+            self.image = self.player2img[134]
+        else:
+            self.image = self.player2img[1234]
+
+    elif self.image == self.player2img[2]:
+        if mapP.image == self.player2img[1]:
+            self.image = self.player2img[12]
+        elif mapP.image == self.player2img[3]:
+            self.image = self.player2img[23]
+        elif mapP.image == self.player2img[4]:
+            self.image = self.player2img[24]
+
+        elif mapP.image == self.player2img[13]:
+            self.image = self.player2img[123]
+        elif mapP.image == self.player2img[34]:
+            self.image = self.player2img[234]
+        else:
+            self.image = self.player2img[1234]
+    
+    elif self.image == self.player2img[3]:
+        if mapP.image == self.player2img[1]:
+            self.image = self.player2img[13]
+        elif mapP.image == self.player2img[2]:
+            self.image = self.player2img[23]
+        elif mapP.image == self.player2img[4]:
+            self.image = self.player2img[34]
+
+        elif mapP.image == self.player2img[12]:
+            self.image = self.player2img[123]
+        elif mapP.image == self.player2img[14]:
+            self.image = self.player2img[134]
+        else:
+            self.image = self.player2img[1234]
+
+    elif self.image == self.player2img[4]:
+        if mapP.image == self.player2img[1]:
+            self.image = self.player2img[14]
+        elif mapP.image == self.player2img[2]:
+            self.image = self.player2img[24]
+        elif mapP.image == self.player2img[3]:
+            self.image = self.player2img[34]
+
+        elif mapP.image == self.player2img[23]:
+            self.image = self.player2img[234]
+        elif mapP.image == self.player2img[13]:
+            self.image = self.player2img[134]
+        else:
+            self.image = self.player2img[1234]
+
+# 3개 업는 부분 =================================
+    elif self.image == self.player2img[12]:
+        if mapP.image == self.player2img[3] or mapP.image == self.player1img[4]:
+            self.image = self.player2img[123]
+        else:
+            self.image = self.player2img[1234]
+
+    elif self.image == self.player2img[13]:
+        if mapP.image == self.player2img[2]:
+            self.image = self.player2img[123]
+        elif mapP.image == self.player2img[4]:
+            self.image = self.player2img[134]
+        else:
+            self.image = self.player2img[1234]
+
+    elif self.image == self.player2img[14]:
+        if mapP.image == self.player2img[3]:
+            self.image = self.player2img[134]
+        else:
+            self.image = self.player2img[1234]
+
+    elif self.image == self.player2img[23]:
+        if mapP.image == self.player2img[1]:
+            self.image = self.player2img[123]
+        elif mapP.image == self.player2img[4]:
+            self.image = self.player2img[234]
+        else:
+            self.image = self.player2img[1234]
+
+    elif self.image == self.player2img[24]:
+        if mapP.image == self.player2img[3]:
+            self.image = self.player2img[234]
+        else:
+            self.image = self.player2img[1234]
+
+    elif self.image == self.player2img[34]:
+        if mapP.image == self.player2img[1]:
+            self.image = self.player2img[134]
+        elif mapP.image == self.player2img[2]:
+            self.image = self.player2img[234]
+        else:
+            self.image = self.player2img[1234]
+        
+
+     # 4개 업는 부분 ===================================
+    elif self.image == self.player2img[123] or self.image == self.player2img[134] or self.image == self.player2img[234]:
+         self.image = self.player2img[1234]
+
+
 
