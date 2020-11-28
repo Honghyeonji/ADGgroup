@@ -7,6 +7,12 @@ from PyQt5 import uic
 import sys
 import yut
 import Nameinput
+import pygame
+
+pygame.mixer.init()
+pygame.mixer.music.load("music.wav") #Music: https://www.bensound.com #음원 바꾸셔도 괜찮습니다 같은 폴더에 음악파일 필요합니다.
+pygame.mixer.music.play(-1)
+
 
 port = 2020
 
