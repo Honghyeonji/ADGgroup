@@ -11,9 +11,6 @@ import Nameinput
 import pygame
 
 pygame.mixer.init()
-pygame.mixer.music.load("music.wav")  #Music: https://www.bensound.com #음원 바꾸셔도 괜찮습니다 같은 폴더에 음악파일 필요합니다.
-pygame.mixer.music.play(-1)
-
 
 port = 2020
 
@@ -95,6 +92,9 @@ class WindowClass(QMainWindow, formGame) :
             self.player1Name.setText(self.p1.name)
             self.p2.name = inputchang.inputName_2.text() if inputchang.inputName_2.text() != "닉네임을 입력하세요" else "국냥이"
             self.player2Name.setText(self.p2.name)
+
+        pygame.mixer.music.load("music.wav")  #게임 시작 후 배경음악 재생 #Music: https://www.bensound.com
+        pygame.mixer.music.play(-1)
 
         # 플레이어 말 대기 칸
         for i in range(4):
