@@ -4,13 +4,14 @@ from PyQt5.QtWidgets import QLayout, QGridLayout
 from PyQt5.QtWidgets import QTextEdit, QLineEdit, QToolButton, QLabel
 from PyQt5.QtGui import *
 from PyQt5 import uic
+import random
 import sys
 import yut
 import Nameinput
 import pygame
 
 pygame.mixer.init()
-pygame.mixer.music.load("music.wav") #Music: https://www.bensound.com #음원 바꾸셔도 괜찮습니다 같은 폴더에 음악파일 필요합니다.
+pygame.mixer.music.load("music.wav")  #Music: https://www.bensound.com #음원 바꾸셔도 괜찮습니다 같은 폴더에 음악파일 필요합니다.
 pygame.mixer.music.play(-1)
 
 
@@ -26,16 +27,6 @@ class WindowClass(QMainWindow, formGame) :
         # 플레이어1,2 객체 생성
         self.p1 = yut.Player()
         self.p2 = yut.Player()
-
-        # p1, p2 닉네임 입력창
-        # 일단 위의 입력칸이 플레이어1의 닉네임, 아래 입력칸이 플레이어2의 닉네임입니다. 추후에 디자인 수정하겠습니다.
-        inputchang = Nameinput.NameInput()
-        r = inputchang.showModel()
-        if r:
-            self.p1.name = inputchang.inputName.text()
-            self.player1Name.setText(self.p1.name)
-            self.p2.name = inputchang.inputName_2.text()
-            self.player2Name.setText(self.p2.name)
 
         # 윷놀이판 배경
         self.background.setStyleSheet('image:url(backgroundEx.png)')
@@ -57,21 +48,7 @@ class WindowClass(QMainWindow, formGame) :
                       [self.player1_0Wait, self.player1_1Wait, self.player1_2Wait, self.player1_3Wait]]
         self.emptyCan = "background-color: rgba(255, 255, 255, 0);"    # 말이 놓여져있지 않은 투명한 can 적용을 위한 배경값 설정
 
-        for i in range(4):
-            self.playerWait[0][i].setStyleSheet(self.player1img[i+1])
-        for i in range(4):
-            self.playerWait[1][i].setStyleSheet(self.player2img[i+1])
-
-        # 윷놀이 판 칸 설정
-        # self.cans = [[self.can0_0, self.can0_1, self.can0_2, self.can0_3, self.can0_4],  # [0:3] 모서리 줄
-        #               [self.can1_0, self.can1_1, self.can1_2, self.can1_3, self.can1_4],
-        #               [self.can2_0, self.can2_1, self.can2_2, self.can2_3, self.can2_4],
-        #               [self.can3_0, self.can3_1, self.can3_2, self.can3_3, self.can3_4],
-        #               [self.can4_0, self.can4_1],   # [4:7] 가운데 줄
-        #               [self.can5_0, self.can5_1],
-        #               [self.can6_0, self.can6_1],
-        #               [self.can7_0, self.can7_1]]
-
+        # 게임판
         self.cans = { '00':self.can0_0, '01':self.can0_1, '02':self.can0_2, '03':self.can0_3, '04':self.can0_4,
                       '10':self.can1_0, '11':self.can1_1, '12':self.can1_2, '13':self.can1_3, '14':self.can1_4,
                       '20':self.can2_0, '21':self.can2_1, '22':self.can2_2, '23':self.can2_3, '24':self.can2_4,
@@ -80,15 +57,15 @@ class WindowClass(QMainWindow, formGame) :
                       '50':self.can5_0, '51':self.can5_1,
                       '60':self.can6_0, '61':self.can6_1,
                       '70':self.can7_0, '71':self.can7_1, }
-        self.canMain.setStyleSheet(self.emptyCan)
-        for key, vaule in self.cans.items():
-            self.cans[key].setStyleSheet(self.emptyCan)
 
-        # for i in range(4):
-        #     for j in range(5):
-        #         self.cans[i][j].setStyleSheet(self.emptyCan)
-        #     for j in range(2):
-        #         self.cans[i+4][j].setStyleSheet(self.emptyCan)
+        # self.cansWH = { '00': "empty", '01': "empty", '02': "empty", '03': "empty", '04': "empty",
+        #                 '10': "empty", '11': "empty", '12': "empty", '13': "empty", '14': "empty",
+        #                 '20': "empty", '21': "empty", '22': "empty", '23': "empty", '24': "empty",
+        #                 '30': "empty", '31': "empty", '32': "empty", '33': "empty", '34': "empty",
+        #                 '40': "empty", '41': "empty",
+        #                 '50': "empty", '51': "empty",
+        #                 '60': "empty", '61': "empty",
+        #                 '70': "empty", '71': "empty", }
 
         # player1 화면 기준 player2Turn일 경우 버튼비활성화
         # 이건 소켓서버클라이언트 성공하면 씁니다.
@@ -102,10 +79,39 @@ class WindowClass(QMainWindow, formGame) :
         self.moveButton.clicked.connect(self.MoveButtonClicked)
         self.randomYut.clicked.connect(self.RandomYutButtonClicked)
 
-        self.turn = 1
-        self.playerTurn.setText("현재 차례: " + str(self.turn))
+        self.turnnum = 0
+        self.turn = {1:self.p1.name, 2:self.p2.name}
 
-            # 윷 던지고 말 이동하기
+        self.startGame() # 승자가 정해지고 게임을 다시 할 때 쓰임
+
+    def startGame(self):
+        # p1, p2 닉네임 입력창
+        # 일단 위의 입력칸이 플레이어1의 닉네임, 아래 입력칸이 플레이어2의 닉네임입니다. 추후에 디자인 수정하겠습니다.
+        # 입력창의 기본값으로 해둔 닉네임을 입력하세요로 들어오면 player1은 쿠민이가 닉네임 기본값으로, player2는 국냥이가 닉네임 기본값으로 들어갑니다.
+        inputchang = Nameinput.NameInput()
+        r = inputchang.showModel()
+        if r:
+            self.p1.name = inputchang.inputName.text() if inputchang.inputName.text() != "닉네임을 입력하세요" else "쿠민이"
+            self.player1Name.setText(self.p1.name)
+            self.p2.name = inputchang.inputName_2.text() if inputchang.inputName_2.text() != "닉네임을 입력하세요" else "국냥이"
+            self.player2Name.setText(self.p2.name)
+
+        # 플레이어 말 대기 칸
+        for i in range(4):
+            self.playerWait[0][i].setStyleSheet(self.player1img[i + 1])
+        for i in range(4):
+            self.playerWait[1][i].setStyleSheet(self.player2img[i + 1])
+
+        self.turnnum = random.randrange(1, 3)  # 선플레이어는 랜덤
+        self.turn = {1: self.p1.name, 2: self.p2.name}
+        self.playerTurn.setText("현재 차례: " + self.turn[self.turnnum] + "님")
+
+        self.canMain.setStyleSheet(self.emptyCan)
+        for key, vaule in self.cans.items():
+            self.cans[key].setStyleSheet(self.emptyCan)
+
+
+        # 윷 던지고 말 이동하기
     def MoveButtonClicked(self):
         # 가정으로 만든 코드이고 오류 유발해서 주석처리 해놨습니다.
         # if(self.yutResult.text() != "윷 결과: "):
