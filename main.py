@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget, QDialog, QMainWindow
+from PyQt5.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QMessageBox
 from PyQt5.QtWidgets import QLayout, QGridLayout
 from PyQt5.QtWidgets import QTextEdit, QLineEdit, QToolButton, QLabel
 from PyQt5.QtGui import *
@@ -140,6 +140,16 @@ class WindowClass(QMainWindow, formGame) :
         #     self.yutResult.setText("윷 결과: " + self.p2.resultyut)
         pass
 
+    def ExitGame(self):
+        result = QMessageBox.information(self
+                                         , '게임 종료'
+                                         , '다시시작 : Yes, 종료 : No'
+                                         , QMessageBox.Ok | QMessageBox.No)
+
+        if result == QMessageBox.Ok:
+            self.startGame()
+        else:
+            self.close()
 
 
 if __name__ == "__main__" :
