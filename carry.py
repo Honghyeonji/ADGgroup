@@ -26,12 +26,12 @@ class Player:
                         '60': "empty", '61': "empty",
                         '70': "empty", '71': "empty", }  # - 맵 현재상태(비었는지말이있는지)
 
-        self.playerLocation = {'player1': "noLocation", "player2": "noLocation", "player3": "noLocation",
-                               "player4": "noLocation",
-                               "player12": "noLocation", "player13": "noLocation", "player14": "noLocation",
-                               "player23": "noLocation", "player24": "noLocation", "player34": "noLocation",
-                               "player123": "noLocation", "player134": "noLocation", "player234": "noLocation",
-                               "player1234": "noLocation", }  # - 플레이어가 현재있는칸의위치
+        self.playerLocation = {'player1_1': "noLocation", "player1_2": "noLocation", "player1_3": "noLocation",
+                               "player1_4": "noLocation",
+                               "player1_12": "noLocation", "player1_13": "noLocation", "player1_14": "noLocation",
+                               "player1_23": "noLocation", "player1_24": "noLocation", "player1_34": "noLocation",
+                               "player1_123": "noLocation", "player1_134": "noLocation", "player1_234": "noLocation",
+                               "player1_1234": "noLocation", }  # - 플레이어가 현재있는칸의위치
 
         #self.playerimage = {"player1": 'image:url(player1_1.png)', }  #
 
@@ -45,25 +45,25 @@ class Player:
                         self.playerLocation[i] = "noLocation"
                         self.playerLocation[4] = self.playerLocation[mal] # 말 업은 이미지 경우의 수가 더 많은데 현재 말이 몇번 째 말인지(무슨 색인지)구분할 수 없어서 그냥 'player12'로 하였습니다.
                         self.playerLocation[mal] = "noLocation"
-                        inputplayer = 12
+                        inputplayer = 'player1_12'
                         return inputplayer
                     elif i == 1:
                         self.playerLocation[i] = "noLocation"
                         self.playerLocation[7] = self.playerLocation[mal]
                         self.playerLocation[mal] = "noLocation"
-                        inputplayer = 23
+                        inputplayer = 'player1_23'
                         return inputplayer
                     elif i == 2:
                         self.playerLocation[i] = "noLocation"
                         self.playerLocation[5] = self.playerLocation[mal]
                         self.playerLocation[mal] = "noLocation"
-                        inputplayer = 13
+                        inputplayer = 'player1_13'
                         return inputplayer
                     elif i == 3:
                         self.playerLocation[i] = "noLocation"
                         self.playerLocation[6] = self.playerLocation[mal]
                         self.playerLocation[mal] = "noLocation"
-                        inputplayer = 14
+                        inputplayer = 'player1_14'
                         return inputplayer
                     else:
                         continue
@@ -76,26 +76,26 @@ class Player:
                         self.playerLocation[10] = self.playerLocation[mal]
                         self.playerLocation[i] = "noLocation"
                         self.playerLocation[mal] = "noLocation"
-                        inputplayer = 123
+                        inputplayer = 'player1_123'
                         return inputplayer
 
                     elif i == 5:  # 13
                         self.playerLocation[11] = self.playerLocation[mal]
                         self.playerLocation[i] = "noLocation"
                         self.playerLocation[mal] = "noLocation"
-                        inputplayer = 134
+                        inputplayer = 'player1_134'
                         return inputplayer
                     elif i == 6:  # 14
                         self.playerLocation[11] = self.playerLocation[mal]
                         self.playerLocation[i] = "noLocation"
                         self.playerLocation[mal] = "noLocation"
-                        inputplayer = 134
+                        inputplayer = 'player1_134'
                         return inputplayer
                     elif i == 7:  # 23
                         self.playerLocation[12] = self.playerLocation[mal]
                         self.playerLocation[i] = "noLocation"
                         self.playerLocation[mal] = "noLocation"
-                        inputplayer = 234
+                        inputplayer = 'player1_234'
                         return inputplayer
                     else:
                         continue
@@ -105,7 +105,7 @@ class Player:
         def upgi3(self, mal,inputplayer):  # 말 3개를 업음 (말 4개)
             self.playerLocation[13] = self.playerLocation[mal]
             self.playerLocation[mal] = "noLocation"
-            inputplayer = 1234
+            inputplayer = 'player1_1234'
             return inputplayer
 
 
