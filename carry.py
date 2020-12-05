@@ -1,352 +1,149 @@
-# 업기 함수를 만들 파일
-'''
-1.윷을 던진다
-2.사용자는 움직일 말을 고른다
-3.말의 좌표가 윷 결과에 따라 이동한다.
-4.만약 이동할 칸에 함수 upgi를 실행한다. upgi(nowMal, mapMal)
-5.현재의 말은 0,0 좌표로 돌아가지만 인터페이스 상에서는 기존에 있었던 팀의 말 위에 업힌 것처럼 출력한다.
-6.기존 판에 있었던 말은 이미지가 업혀진 말로 변경이 된다. upgi_img(mapMal)
-7. 그 상태로 출발점으로 돌아오면 if문으로 검사하여 이미지에 따라 스코어를 받는다.
+# 업기 함수를 만들 연습파일
 
-판에 이미 있던 말 - A, 새로 판에 둘 말 - B
-
-if A[?][?] == B[?][?]
-    B = [0][0]
-    A => 말2개로 이미지 변경
-
-goal 지점에서 이미지 검사로 스코어 증가?
-각 칸 배열 마다 고유값 설정 필요함
-이미 2~3개를 업은 상태에서 2~1개를 더 업는다면?
-'''
-
-def upgi(self, mapP):  # nowP : 현재 움직일 말, mapP : 현재 맵 좌표에 있는 말
-    if self. == self.player1_1:
-        if mapP == self.player1_2:
-            # 이미지에 따라 도착지점에서 올라갈 스코어 확인?
-            self.player1_1 = self.yutArray[0][0] # 1번째 말은 2번째 말에 업은 것 처럼 보이지만 맵 처음으로 돌려보냄.
-            upgi_img(mapP)                        # 이후에 잡혀서 원점으로 돌아오지 않는 이상 사용할 수 X 인터페이스에 표시되지 않음.
-
-
-        elif mapP == self.player1_3:
-            self.player1_1 = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player1_4:
-            self.player1_1 = self.yutArray[0][0]
-            upgi_img(mapP)
-
-    elif nowP == self.player1_2:
-        if mapP == self.player1_1:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player1_3:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player1_4:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-    elif nowP == self.player1_3:
-        if mapP == self.player1_1:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player1_2:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player1_4:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-    elif nowP == self.player1_4:
-        if mapP == self.player1_1:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player1_2:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player1_3:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-    elif nowP == self.player2_1:
-        if mapP == self.player2_2:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player2_3:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player2_4:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-    elif nowP == self.player2_2:
-        if mapP == self.player2_1:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player2_3:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player2_4:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-    elif nowP == self.player2_3:
-        if mapP == self.player2_1:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player2_2:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player2_4:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-    elif nowP == self.player2_4:
-        if mapP == self.player2_1:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player2_2:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-
-        elif mapP == self.player2_3:
-            self.nowP = self.yutArray[0][0]
-            upgi_img(mapP)
-    else:
-        continue
-
-
-def upgi_img(self,mapP):
-    #말 2개가 업혀진 이미지 변경 ex)image:url('upgi2.png')
-    if self.image == self.player1img[1]:
-        if mapP.image == self.player1img[2]:
-            self.image = self.player1img[12]
-        elif mapP.image == self.player1img[3]:
-            self.image = self.player1img[13]
-        elif mapP.image == self.player1img[4]:
-            self.image = self.player1img[14]
-        elif mapP.image == self.player1img[23]:
-            self.image = self.player1img[123]
-        elif mapP.image == self.player1img[34]:
-            self.image = self.player1img[134]
-        else:
-            self.image = self.player1img[1234]
-
-    elif self.image == self.player1img[2]:
-        if mapP.image == self.player1img[1]:
-            self.image = self.player1img[12]
-        elif mapP.image == self.player1img[3]:
-            self.image = self.player1img[23]
-        elif mapP.image == self.player1img[4]:
-            self.image = self.player1img[24]
-
-        elif mapP.image == self.player1img[13]:
-            self.image = self.player1img[123]
-        elif mapP.image == self.player1img[34]:
-            self.image = self.player1img[234]
-        else:
-            self.image = self.player1img[1234]
-    
-    elif self.image == self.player1img[3]:
-        if mapP.image == self.player1img[1]:
-            self.image = self.player1img[13]
-        elif mapP.image == self.player1img[2]:
-            self.image = self.player1img[23]
-        elif mapP.image == self.player1img[4]:
-            self.image = self.player1img[34]
-
-        elif mapP.image == self.player1img[12]:
-            self.image = self.player1img[123]
-        elif mapP.image == self.player1img[14]:
-            self.image = self.player1img[134]
-        else:
-            self.image = self.player1img[1234]
-
-    elif self.image == self.player1img[4]:
-        if mapP.image == self.player1img[1]:
-            self.image = self.player1img[14]
-        elif mapP.image == self.player1img[2]:
-            self.image = self.player1img[24]
-        elif mapP.image == self.player1img[3]:
-            self.image = self.player1img[34]
-
-        elif mapP.image == self.player1img[23]:
-            self.image = self.player1img[234]
-        elif mapP.image == self.player1img[13]:
-            self.image = self.player1img[134]
-        else:
-            self.image = self.player1img[1234]
-
-    # 3개 업는 부분 =================================
-
-    elif self.image == self.player1img[12]:
-        if mapP.image == self.player1img[3] or mapP.image == self.player1img[4]:
-            self.image = self.player1img[123]
-        else:
-            self.image = self.player1img[1234]
-
-    elif self.image == self.player1img[13]:
-        if mapP.image == self.player1img[2]:
-            self.image = self.player1img[123]
-        elif mapP.image == self.player1img[4]:
-            self.image = self.player1img[134]
-        else:
-            self.image = self.player1img[1234]
-
-    elif self.image == self.player1img[14]:
-        if mapP.image == self.player1img[3]:
-            self.image = self.player1img[134]
-        else:
-            self.image = self.player1img[1234]
-
-    elif self.image == self.player1img[23]:
-        if mapP.image == self.player1img[1]:
-            self.image = self.player1img[123]
-        elif mapP.image == self.player1img[4]:
-            self.image = self.player1img[234]
-        else:
-            self.image = self.player1img[1234]
-
-    elif self.image == self.player1img[24]:
-        if mapP.image == self.player1img[3]:
-            self.image = self.player1img[234]
-        else:
-            self.image = self.player1img[1234]
-
-    elif self.image == self.player1img[34]:
-        if mapP.image == self.player1img[1]:
-            self.image = self.player1img[134]
-        elif mapP.image == self.player1img[2]:
-            self.image = self.player1img[234]
-        else:
-            self.image = self.player1img[1234]
-        
-
-     # 4개 업는 부분 ===================================
-    elif self.image == self.player1img[123] or self.image == self.player1img[134] or self.image == self.player1img[234]:
-         self.image = self.player1img[1234]
-    
-
-    # === player2 ===
-    elif self.image == self.player2img[1]:
-        if mapP.image == self.player2img[2]:
-            self.image = self.player2img[12]
-        elif mapP.image == self.player2img[3]:
-            self.image = self.player2img[13]
-        elif mapP.image == self.player2img[4]:
-            self.image = self.player2img[14]
-        elif mapP.image == self.player2img[23]:
-            self.image = self.player2img[123]
-        elif mapP.image == self.player2img[34]:
-            self.image = self.player2img[134]
-        else:
-            self.image = self.player2img[1234]
-
-    elif self.image == self.player2img[2]:
-        if mapP.image == self.player2img[1]:
-            self.image = self.player2img[12]
-        elif mapP.image == self.player2img[3]:
-            self.image = self.player2img[23]
-        elif mapP.image == self.player2img[4]:
-            self.image = self.player2img[24]
-
-        elif mapP.image == self.player2img[13]:
-            self.image = self.player2img[123]
-        elif mapP.image == self.player2img[34]:
-            self.image = self.player2img[234]
-        else:
-            self.image = self.player2img[1234]
-    
-    elif self.image == self.player2img[3]:
-        if mapP.image == self.player2img[1]:
-            self.image = self.player2img[13]
-        elif mapP.image == self.player2img[2]:
-            self.image = self.player2img[23]
-        elif mapP.image == self.player2img[4]:
-            self.image = self.player2img[34]
-
-        elif mapP.image == self.player2img[12]:
-            self.image = self.player2img[123]
-        elif mapP.image == self.player2img[14]:
-            self.image = self.player2img[134]
-        else:
-            self.image = self.player2img[1234]
-
-    elif self.image == self.player2img[4]:
-        if mapP.image == self.player2img[1]:
-            self.image = self.player2img[14]
-        elif mapP.image == self.player2img[2]:
-            self.image = self.player2img[24]
-        elif mapP.image == self.player2img[3]:
-            self.image = self.player2img[34]
-
-        elif mapP.image == self.player2img[23]:
-            self.image = self.player2img[234]
-        elif mapP.image == self.player2img[13]:
-            self.image = self.player2img[134]
-        else:
-            self.image = self.player2img[1234]
-
-# 3개 업는 부분 =================================
-    elif self.image == self.player2img[12]:
-        if mapP.image == self.player2img[3] or mapP.image == self.player1img[4]:
-            self.image = self.player2img[123]
-        else:
-            self.image = self.player2img[1234]
-
-    elif self.image == self.player2img[13]:
-        if mapP.image == self.player2img[2]:
-            self.image = self.player2img[123]
-        elif mapP.image == self.player2img[4]:
-            self.image = self.player2img[134]
-        else:
-            self.image = self.player2img[1234]
-
-    elif self.image == self.player2img[14]:
-        if mapP.image == self.player2img[3]:
-            self.image = self.player2img[134]
-        else:
-            self.image = self.player2img[1234]
-
-    elif self.image == self.player2img[23]:
-        if mapP.image == self.player2img[1]:
-            self.image = self.player2img[123]
-        elif mapP.image == self.player2img[4]:
-            self.image = self.player2img[234]
-        else:
-            self.image = self.player2img[1234]
-
-    elif self.image == self.player2img[24]:
-        if mapP.image == self.player2img[3]:
-            self.image = self.player2img[234]
-        else:
-            self.image = self.player2img[1234]
-
-    elif self.image == self.player2img[34]:
-        if mapP.image == self.player2img[1]:
-            self.image = self.player2img[134]
-        elif mapP.image == self.player2img[2]:
-            self.image = self.player2img[234]
-        else:
-            self.image = self.player2img[1234]
-        
-
-     # 4개 업는 부분 ===================================
-    elif self.image == self.player2img[123] or self.image == self.player2img[134] or self.image == self.player2img[234]:
-         self.image = self.player2img[1234]
+# 업기함수를 3개로 나누었습니다. 1개->2개, 2개->3개, 3개->4개
+# 그래서 업기 전에 현재 말이 1개인지 2개인지(1개를 업음) 3개인지(2개를 업음) 상태에 따라 알맞는 업기함수를 선택해서 하도록 해야할 것 같습니다.
+# 현재 말의 이미지를 검사하여 하는 등의 방법이 있을 것 같습니다.
+# 현지님이 올려주셨던 move함수와 관계를 생각하며 업기 코드를 짜보았습니다. 그런데 부족한 부분이 많기 때문에 안되는 부분 or 이해 안되는 부분 바로 알려주시면 감사하겠습니다.
 
 
 
+class Player:
+    def __init__(self):
+
+        # 이동 함수에서만 쓰일 pYut = 0  # 사용자의 도,개,걸,윷,모,빽도,낙의 이동해야할 칸수를 저장합니다.
+        # -> 이동함수 인자로 이동시킬 플레이어말넘버와 윷 결과를 넣고
+        # -> 아래의 self.yuts 딕으로 이동시킬 칸을 찾아 pYut에 넣고 그 값에 따라 이동하게
+        self.yutrandoms = []  # 확률 구성 리스트
+        self.yuts = {"빽도":-1, "낙":0, "도":1, "개":2, "걸":3, "윷":4, "모":5}
+        self.name = '' # 플레이어 닉네임
+        self.resultyut = ''
+        self.mapcan = {'00': "empty", '01': "empty", '02': "empty", '03': "empty", '04': "empty",
+                        '10': "empty", '11': "empty", '12': "empty", '13': "empty", '14': "empty",
+                        '20': "empty", '21': "empty", '22': "empty", '23': "empty", '24': "empty",
+                        '30': "empty", '31': "empty", '32': "empty", '33': "empty", '34': "empty",
+                        '40': "empty", '41': "empty",
+                        '50': "empty", '51': "empty",
+                        '60': "empty", '61': "empty",
+                        '70': "empty", '71': "empty", }  # - 맵 현재상태(비었는지말이있는지)
+
+        self.playerLocation = {'player1': "noLocation", "player2": "noLocation", "player3": "noLocation",
+                               "player4": "noLocation",
+                               "player12": "noLocation", "player13": "noLocation", "player14": "noLocation",
+                               "player23": "noLocation", "player24": "noLocation", "player34": "noLocation",
+                               "player123": "noLocation", "player134": "noLocation", "player234": "noLocation",
+                               "player1234": "noLocation", }  # - 플레이어가 현재있는칸의위치
+
+        #self.playerimage = {"player1": 'image:url(player1_1.png)', }  #
+
+        def upgi(self, mal,inputplayer):  # 말 1개를 업음 (말 2개)
+            # 여기서 mal은 현재 움직인 말 nowplayer
+            pL = list(self.playerLocation.values())  # 말들의 현재 위치를  리스트로 생성
+
+            for i in range(len(pL)):
+                if mal == pL[i]:  # 현재 말과 위치가 같은 말 발견
+                    if i == 0:  # 같은 위치의 말이 player1 말 ->self.playerLocation[0]은 'player1'의 value값이기 때문입니다.
+                        self.playerLocation[i] = "noLocation"
+                        self.playerLocation[4] = self.playerLocation[mal] # 말 업은 이미지 경우의 수가 더 많은데 현재 말이 몇번 째 말인지(무슨 색인지)구분할 수 없어서 그냥 'player12'로 하였습니다.
+                        self.playerLocation[mal] = "noLocation"
+                        inputplayer = 12
+                        return inputplayer
+                    elif i == 1:
+                        self.playerLocation[i] = "noLocation"
+                        self.playerLocation[7] = self.playerLocation[mal]
+                        self.playerLocation[mal] = "noLocation"
+                        inputplayer = 23
+                        return inputplayer
+                    elif i == 2:
+                        self.playerLocation[i] = "noLocation"
+                        self.playerLocation[5] = self.playerLocation[mal]
+                        self.playerLocation[mal] = "noLocation"
+                        inputplayer = 13
+                        return inputplayer
+                    elif i == 3:
+                        self.playerLocation[i] = "noLocation"
+                        self.playerLocation[6] = self.playerLocation[mal]
+                        self.playerLocation[mal] = "noLocation"
+                        inputplayer = 14
+                        return inputplayer
+                    else:
+                        continue
+
+        def upgi2(self, mal,inputplayer):  # 말 2개를 업음 (말 3개)
+            pL = list(self.playerLocation.values())
+            for i in range(len(pL)):
+                if mal == pL[i]:
+                    if i == 4:  # 12
+                        self.playerLocation[10] = self.playerLocation[mal]
+                        self.playerLocation[i] = "noLocation"
+                        self.playerLocation[mal] = "noLocation"
+                        inputplayer = 123
+                        return inputplayer
+
+                    elif i == 5:  # 13
+                        self.playerLocation[11] = self.playerLocation[mal]
+                        self.playerLocation[i] = "noLocation"
+                        self.playerLocation[mal] = "noLocation"
+                        inputplayer = 134
+                        return inputplayer
+                    elif i == 6:  # 14
+                        self.playerLocation[11] = self.playerLocation[mal]
+                        self.playerLocation[i] = "noLocation"
+                        self.playerLocation[mal] = "noLocation"
+                        inputplayer = 134
+                        return inputplayer
+                    elif i == 7:  # 23
+                        self.playerLocation[12] = self.playerLocation[mal]
+                        self.playerLocation[i] = "noLocation"
+                        self.playerLocation[mal] = "noLocation"
+                        inputplayer = 234
+                        return inputplayer
+                    else:
+                        continue
+                    # elif i == 8:
+                    # elif i == 9:
+
+        def upgi3(self, mal,inputplayer):  # 말 3개를 업음 (말 4개)
+            self.playerLocation[13] = self.playerLocation[mal]
+            self.playerLocation[mal] = "noLocation"
+            inputplayer = 1234
+            return inputplayer
+
+
+        # 현지님이 올려주신 이동함수 입니다.
+        def move(self, inputplayer):
+            #inputplayer는 플레이어 말
+            oldplayer = self.playerLocation[inputplayer]
+            nowplayer = self.playerLocation[inputplayer]
+            if(nowplayer[1]<"4"): #외곽선 이동시
+                nowplayer = str(int(nowplayer) + self.pyut)
+                if(nowplayer[1] > "4"): #꺾여진 선 이동
+                    if(nowplayer[0] == "3"):
+                        pass
+                    #마지막 줄이었을 경우 골인
+                    else:
+                        nowplayer = str(int(nowplayer) - 4 + 10)
+            elif(nowplayer[1] == "4"): #대각선 진입시
+                if nowplayer[0] == "3":
+                    pass
+                #대각선 진입 x
+                else:
+                    pass# 대각선 진입
+            elif nowplayer[0] in range(4,8):
+                pass
+            #대각선에 있을 경우
+            elif(nowplayer[0] == maincan):
+                pass
+            #정가운데 칸에 있을 경우
+
+            pL = list(self.playerLocation.values()) # 말들의 현재 위치를 가진 리스트를 생성
+            if(nowplayer in pL): # 리스트에 현재 움직인 말의 위치와 같은 말이 있다면 업기 실행 (현재 pL에 현재 움직인 말의 위치정보가 업데이트 되지 않았음)
+                self.upgi(nowplayer,inputplayer)
+                # 위치정보가 같은 말이 하나도 없으면 그냥 이동한다.
+
+            #이 안에서 함수 연계해서 말잡기, 말업기 기능 추가
+
+            self.mapcan[oldplayer] = "empty"
+            self.mapcan[nowplayer] = inputplayer #맵 정보 갱신
+            self.playerLocation[inputplayer] = nowplayer # 플레이어 말 각각의 위치 정보 갱신
+
+            return oldplayer, nowplayer, self.playerimg[inputplayer]
