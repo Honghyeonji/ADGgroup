@@ -11,200 +11,308 @@ import random
 class Player:
     def __init__(self):
 
-        # 이동 함수에서만 쓰일 pYut = 0  # 사용자의 도,개,걸,윷,모,빽도,낙의 이동해야할 칸수를 저장합니다.
-        # -> 이동함수 인자로 이동시킬 플레이어말넘버와 윷 결과를 넣고
-        # -> 아래의 self.yuts 딕으로 이동시킬 칸을 찾아 pYut에 넣고 그 값에 따라 이동하게
-        self.yutrandoms = []  # 확률 구성 리스트
-        self.yuts = {"빽도":-1, "낙":0, "도":1, "개":2, "걸":3, "윷":4, "모":5}
-        self.name = '' # 플레이어 닉네임
-        self.resultyut = ''
-        # 플레이어
-        self.player1_1 = [0][0]
-        self.player1_2 = [0][0]
-        self.player1_3 = [0][0]
-        self.player1_4 = [0][0]
+        self.pYut = 0  # 도개걸윷모낙빽도 결과 이동해야할 칸 수로 저장
+        self.yutRandoms = []  # 확률 구성 리스트
+        self.name = ''  # 플레이어 닉네임
+        self.resultYut = ''  # 도개걸윷모낙빽도 결과 문자열로 저장
+        self.goalplayer = 0  # 골인한 말의 수 - main.py에서 move이벤트 한 후에 goal판정하는 데에 쓰일 변수
 
-        self.player2_1 = [0][0]
-        self.player2_2 = [0][0]
-        self.player2_3 = [0][0]
-        self.player2_4 = [0][0]
-
-        #윷놀이판 배열
-        # self.yutArray = [[0][0], [0][1], [0][2], [0][3], [0][4],
-        #                  [1][0], [1][1], [1][2], [1][3], [1][4],
-        #                  [2][0], [2][1], [2][2], [2][3], [2][4],
-        #                  [3][0], [3][1], [3][2], [3][3], [3][4],  # 모서리쪽 칸
-        #                  [4][0], [4][1],
-        #                  [5][0], [5][1],
-        #                  [6][0], [6][1],
-        #                  [7][0], [7][1]]  # 가운데쪽 칸
-        # self.turn = '1'  # 플레이어의 턴 저장 변수 '1' 이면 1player, '2'이면 2player
-        # self.yutcount = 0 #누적 윷 갯수
         # self.canthow = 0 # 윷 던질 수 있는 횟수
+
+        self.mapCan = {'11': "empty", '12': "empty", '13': "empty", '14': "empty", '15': "empty",
+                       '21': "empty", '22': "empty", '23': "empty", '24': "empty", '25': "empty",
+                       '31': "empty", '32': "empty", '33': "empty", '34': "empty", '35': "empty",
+                       '41': "empty", '42': "empty", '43': "empty", '44': "empty", '45': "empty",
+                       '51': "empty", '52': "empty",
+                       '61': "empty", '62': "empty",
+                       '71': "empty", '72': "empty",
+                       '81': "empty", '82': "empty",
+                       '90': "empty"}  # 90은 제일 가운데 칸
+
+        self.playerLocation = {'player1': "noLocation", "player2": "noLocation", "player3": "noLocation",
+                               "player4": "noLocation",
+                               "player12": "noLocation", "player13": "noLocation", "player14": "noLocation",
+                               "player23": "noLocation", "player24": "noLocation", "player34": "noLocation",
+                               "player123": "noLocation", "player134": "noLocation", "player234": "noLocation",
+                               "player1234": "noLocation", }
 
         # 윷 확률 : 개(30%) 걸(26%) 도(12%) 빽도(12%) 낙(10%) 윷(5%) 모(5%)
         for i in range(100):
             if i < 30:
-                self.yutrandoms.append(2)  # 개
+                self.yutRandoms.append(2)  # 개
             elif i < 56:
-                self.yutrandoms.append(3)  # 걸
+                self.yutRandoms.append(3)  # 걸
             elif i < 68:
-                self.yutrandoms.append(1)  # 도
+                self.yutRandoms.append(1)  # 도
             elif i < 80:
-                self.yutrandoms.append(-1)  # 빽도
+                self.yutRandoms.append(-1)  # 빽도
             elif i < 90:
-                self.yutrandoms.append(0)  # 낙
+                self.yutRandoms.append(0)  # 낙
             elif i < 95:
-                self.yutrandoms.append(4)  # 윷
+                self.yutRandoms.append(4)  # 윷
             else:
-                self.yutrandoms.append(5)  # 모
+                self.yutRandoms.append(5)  # 모
 
     # 이동할 칸 수를 리턴하는 메소드
     def throw(self):
+        resultNum = random.randint(0, 99)  # 난수로 yuts의 자리값 선택
+        self.resultYut = ''
 
-        # 난수로 yuts의 자리값 선택
-        resultnum = random.randint(0, 99)
-        self.resultyut = ''
-
-        if self.yutrandoms[resultnum] == -1:
-            self.resultyut = "빽도"
-        elif self.yutrandoms[resultnum] ==0:
-            self.resultyut =  '낙'
-        elif self.yutrandoms[resultnum] == 1:
-            self.resultyut = '도'
-        elif self.yutrandoms[resultnum] == 2:
-            self.resultyut = '개'
-        elif self.yutrandoms[resultnum] == 3:
-            self.resultyut = '걸'
-        elif self.yutrandoms[resultnum] == 4:
-            self.resultyut = '윷'
-        elif self.yutrandoms[resultnum] == 5:
-            self.resultyut = '모'
-
-        # 이동 칸 수 반환
-        # return self.yutrandoms[resultnum]
-
-
-    ## 아래 함수들은 아직 메인함수랑 연동했을 때 오류가 떠서 주석처리 해놨습니다! ##
-
-
-    #말 움직이는 함수
-    # def moveButton(self):
-    #     if self.pYut == '빽도':
-    #         for i,j in self.yutArray:
-    #             self.savePlayer = [i][j] # 말의 현재위치
-    #             self.savePlayer = self.savePlayer[i][j-1]
-    #             #출발점일 땐 이동 안함
-    #             if self.player1_1 == self.player1_1[0][0]:
-    #                 self.savePlayer = self.savePlayer[0][0]
-    #             #예외상황
-    #             elif self.savePlayer == self.savePlayer[1][0]:
-    #                 self.savePlayer = self.yutArray[0][4]
-    #             elif self.savePlayer == self.savePlayer[4][0]:
-    #                 self.savePlayer = self.yutArray[0][4]
-    #             elif self.savePlayer == self.savePlayer[2][0]:
-    #                 self.savePlayer = self.yutArray[1][4]
-    #             elif self.savePlayer == self.savePlayer[5][0]:
-    #                 self.savePlayer = self.yutArray[1][4]
-    #             elif self.savePlayer == self.savePlayer[3][0]:
-    #                 self.savePlayer = self.yutArray[2][4]
-    #             elif self.savePlayer == self.savePlayer[7][1]:
-    #                 self.savePlayer = self.yutArray[2][4]
-    #             break
-    #     if self.pYut == '낙':
-    #         for i,j in range in self.yutArray:
-    #             self.savePlayer = self.savePlayer[i][j]
-    #     if self.pYut == '도':
-    #         for i,j in range in self.yutArray:
-    #             self.savePlayer = self.savePlayer[i][j+1]
-    #     if self.pYut == '개':
-    #         for i,j in range in self.yutArray:
-    #             self.savePlayer = self.savePlayer[i][j+2]
-    #     if self.pYut == '걸':
-    #         for i,j in range in self.yutArray:
-    #             self.savePlayer = self.savePlayer[i][j+3]
-    #     if self.pYut == '윷':
-    #         for i,j in range in self.yutArray:
-    #             self.savePlayer = self.savePlayer[i][j+4]
-    #     if self.pYut == '모':
-    #         for i,j in range in self.yutArray:
-    #             self.savePlayer = self.savePlayer[i][j+5]
-
-    #턴 옮기는 함수 구현 후 더 구현할 예정
-    # def location(self):
-    #     self.shortcut = bool('지름길') #지름길 판별
-    #     #1P 첫번째 지름길
-    #     if self.player1_1 == self.yutArray[0][4]:
-    #         self.shortcut = '지름길'
-    #     elif self.player1_2 == self.yutArray[0][4]:
-    #         self.shortcut = '지름길'
-    #     elif self.player1_3 == self.yutArray[0][4]:
-    #         self.shortcut = '지름길'
-    #     elif self.player1_4 == self.yutArray[0][4]:
-    #         self.shortcut = '지름길'
-    #     #1P 두번째 지름길
-    #     elif self.player1_1 == self.yutArray[1][4]:
-    #         self.shortcut = '지름길'
-    #     elif self.player1_2 == self.yutArray[1][4]:
-    #         self.shortcut = '지름길'
-    #     elif self.player1_3 == self.yutArray[1][4]:
-    #         self.shortcut = '지름길'
-    #     elif self.player1_4 == self.yutArray[1][4]:
-    #         self.shortcut = '지름길'
-    #     #2P 첫번째 지름길
-    #     elif self.player2_1 == self.yutArray[0][4]:
-    #         self.shortcut = '지름길'
-    #     elif self.player2_2 == self.yutArray[0][4]:
-    #         self.shortcut = '지름길'
-    #     elif self.player2_3 == self.yutArray[0][4]:
-    #         self.shortcut = '지름길'
-    #     elif self.player2_4 == self.yutArray[0][4]:
-    #         self.shortcut = '지름길'
-    #     #2P 두번째 지름길
-    #     elif self.player2_1 == self.yutArray[1][4]:
-    #         self.shortcut = '지름길'
-    #     elif self.player2_2 == self.yutArray[1][4]:
-    #         self.shortcut = '지름길'
-    #     elif self.player2_3 == self.yutArray[1][4]:
-    #         self.shortcut = '지름길'
-    #     elif self.player2_4 == self.yutArray[1][4]:
-    #         self.shortcut = '지름길'
-    #
-    #     return self.shortcut
-    #
-    # #골판정 함수
-    # def Goal(self):
-    #     self.goal_1p = 0
-    #     self.goal_2p = 0
-    #     if self.player1_1 == self.yutArray[3][4]:
-    #         self.goal_1p = self.goal_1p + 1
-    #     elif self.player1_2 == self.yutArray[3][4]:
-    #         self.goal_1p = self.goal_1p + 1
-    #     elif self.player1_3 == self.yutArray[3][4]:
-    #         self.goal_1p = self.goal_1p + 1
-    #     elif self.player1_4 == self.yutArray[3][4]:
-    #         self.goal_1p = self.goal_1p + 1
-    #
-    #     if self.player2_1 == self.yutArray[3][4]:
-    #         self.goal_2p = self.goal_2p + 1
-    #     elif self.player2_2 == self.yutArray[3][4]:
-    #         self.goal_2p = self.goal_2p + 1
-    #     elif self.player2_3 == self.yutArray[3][4]:
-    #         self.goal_2p = self.goal_2p + 1
-    #     elif self.player2_4 == self.yutArray[3][4]:
-    #         self.goal_2p = self.goal_2p + 1
-    #
-    #     return self.goal_1p, self.goal_2p
-    #
-    # #게임 종료
-    # def GameOver(self):
-    #     self.text #승리 메세지 변수
-    #     if self.goal_1p == 4:
-    #         self.text = "플레이어 1이 이겼습니다!"
-    #     elif self.goal_2p == 4:
-    #         self.text = "플레이어 2가 이겼습니다!"
+        if self.yutRandoms[resultNum] == -1:
+            self.resultYut = "빽도"
+            self.pYut = -1
+        elif self.yutRandoms[resultNum] == 0:
+            self.resultYut = '낙'
+            self.pYut = 0
+        elif self.yutRandoms[resultNum] == 1:
+            self.resultYut = '도'
+            self.pYut = 1
+        elif self.yutRandoms[resultNum] == 2:
+            self.resultYut = '개'
+            self.pYut = 2
+        elif self.yutRandoms[resultNum] == 3:
+            self.resultYut = '걸'
+            self.pYut = 3
+        elif self.yutRandoms[resultNum] == 4:
+            self.resultYut = '윷'
+            self.pYut = 4
+        elif self.yutRandoms[resultNum] == 5:
+            self.resultYut = '모'
+            self.pYut = 5
 
 
-# player1 = Yut()
-# print(player1.throw())
-# print(player1.pYut)
+    # 말 움직이는 함수
+    def move(self, inputplayer, rivalLocation):  # 라이벌로케이션은 이대로 말 잡기에서 수정되어서 리턴될 것임
+
+        # 빽도였을 경우와 낙일경우도 추가해야함
+
+        oldplayer = self.playerLocation[inputplayer]  # 원래 말이 서있던 위치
+        nowplayer = self.playerLocation[inputplayer]  # 현재 말이 어느 위치에 서있는지
+
+        # 외곽선 이동, 1, 2번 줄인데 모서리에 안서있는 경우(모서리에 서있으면 대각전 진입) 혹은 3, 4번 줄일 경우
+        # nowplayer는 현재 말의 위치라서 "OO" 형식, 첫번째 숫자는 몇번째 선에 있는지, 두번째 숫자는 그 선의 몇 번째 칸에 있는지를 표현
+        if ((1 <= int(nowplayer[0]) <= 2) and (int(nowplayer[1]) < 5)) or (3 <= int(nowplayer[0]) <= 4):
+            # 마지막 줄이었을 경우
+            if nowplayer[0] == "4":
+                nowplayer = str(int(nowplayer) + self.pYut)
+                # 말이 서있어야할 위치가 마지막 줄의 마지막 칸을 넘겼다면 골인
+                if int(nowplayer[1]) > 5:
+                    self.playerLocation[inputplayer] = "noLocation"  # 현재 말의 위치 정보에서 위치 없앰
+                    self.goal(inputplayer)  # 몇개의 말이 골을 했는지 판정 -> 골한 말의 수 갱신
+                    self.mapCan[oldplayer] = "empty"  # 현재 칸의 상태에서 원래 말이 서있던 위치 비움
+
+            # 마지막 줄이 아니였을 경우
+            else:
+                nowplayer = str(int(nowplayer) + self.pYut)
+                # 꺾여진 선 이동 (n번째 줄에서 n+1번째 줄로 넘어갈 때)
+                if int(nowplayer[1]) > 5:
+                    nowplayer = str(int(nowplayer) - 5 + 10 + self.pYut)
+
+        # 1번째 줄 모서리에서 대각선 진입
+        elif nowplayer == "15":
+            nowplayer = str(int(nowplayer) - 5 + 40 + self.pYut)  # 일단 5번째 줄로 이동
+            if nowplayer[1] == "3":  # 대각선들 줄은 칸의 수가 2개씩 밖에 없기 때문에 두번째 숫자가 3일 경우 가운데 칸
+                nowplayer = "90"
+            elif 4 <= int(nowplayer[1]) <= 5:  # 두번째 숫자가 4 or 5일 경우 7번째 줄로 재설정(이어지는 대각선)
+                nowplayer = str(int(nowplayer) - 3 + 20)
+        # 2번째 줄 모서리에서 대각선 진입
+        elif nowplayer == "25":
+            # 위 코드와 동일
+            nowplayer = str(int(nowplayer) - 5 + 40 + self.pYut)
+            if nowplayer[1] == "3":
+                nowplayer = "90"
+            elif 4 <= int(nowplayer[1]) <= 5:
+                nowplayer = str(int(nowplayer) - 3 + 20)
+
+        # 대각선에 있을 경우
+        elif int(nowplayer[0]) in range(5, 10):
+            # 플레이어말이 메인칸 전 대각선에 있을 경우 (5번째, 6번째 줄에 있을 경우)
+            if int(nowplayer[0]) in range(5, 7):
+                nowplayer = str(int(nowplayer) + self.pYut)
+                if nowplayer[1] == "3":
+                    nowplayer = "90"
+                elif 4 <= int(nowplayer[1]) <= 5:
+                    nowplayer = str(int(nowplayer) - 3 + 20)
+                # 두번째 숫자가 6일 경우
+                elif nowplayer[1] == "6":
+                    if nowplayer[0] == "5":  # 5번째줄(오른쪽 위 대각선)에 있던 플레이어말은 왼쪽 아래 꼭짓점칸으로 이동
+                        nowplayer = "35"
+                    elif nowplayer[0] == "6":  # 6번째줄(왼쪽 위 대각선)에 있던 플레이어말은 골인위치로 이동
+                        nowplayer = "45"
+                # 두번째 숫자가 7이상일 경우
+                elif int(nowplayer[1]) >= 7:
+                    if nowplayer[0] == "5":  # 5번째줄(오른쪽 위 대각선)에 있던 플레이어말은 외곽 마지막줄로 이동
+                       nowplayer = str(int(nowplayer) - 16)
+                    elif nowplayer[0] == "6":  # 6번째줄(왼쪽 위 대각선)에 있던 플레이어말은 골인
+                        self.playerLocation[inputplayer] = "noLocation"
+                        self.goal(inputplayer)
+                        self.mapCan[nowplayer] = "empty"
+
+            # 플레이어말이 메인칸 후 대각선에 있을 경우 (7번째, 8번째 줄에 있을 경우)
+            elif int(nowplayer[0]) in range(7, 9):
+                nowplayer = str(int(nowplayer) + self.pYut)
+                if nowplayer[1] == "3":  # 두번째 숫자가 3일 경우
+                    if nowplayer[0] == "7":  # 7번째줄(왼쪽 아래 대각선)에 있던 플레이어 말은 왼쪽 아래 꼭짓점칸으로 이동
+                        nowplayer = "35"
+                    elif nowplayer[0] == "8":  # 8번째줄(오른쪽 아래 대각선)에 있던 플레이어 말은 오른쪽 아래 꼭짓점칸으로 이동
+                        nowplayer = "45"
+                elif int(nowplayer[1]) > 3:  # 두번째 숫자가 3 이상일 경우 - 외곽선 가운데에 위치해있어야함
+                    if nowplayer[0] == "7":  # 7번째줄(왼쪽 아래 대각선)에 있던 플레이어 말은 외곽 마지막줄로 이동동
+                        nowplayer = str(int(nowplayer) - 33)
+                    if nowplayer[0] == "8":  # 8번째줄(오른쪽 아래 대각선)에 있던 플레이어 말은 골인
+                        self.playerLocation[inputplayer] = "noLocation"
+                        self.goal(inputplayer)
+                        self.mapCan[nowplayer] = "empty"
+
+            elif nowplayer == "90":  # 정가운데 칸에 있을 경우
+                nowplayer = str(80 + self.pYut)  # 무조건 골쪽으로 이동해야하니 8번째 줄에서부터 시작(80에서 시작)
+                if nowplayer == "83":  # 83일경우 골인지점에 위치
+                    nowplayer = "45"
+                elif int(nowplayer[1]) > 3:  # 골인
+                    self.playerLocation[inputplayer] = "noLocation"
+                    self.goal(inputplayer)
+                    self.mapCan[nowplayer] = "empty"
+
+        # 말업기가 됐을 경우 현재플레이어말 갱신,
+        inputplayer = self.upgi(inputplayer, nowplayer)
+
+        self.mapCan[oldplayer] = "empty"
+        self.mapCan[nowplayer] = inputplayer  # 맵 정보 갱신
+        self.playerLocation[inputplayer] = nowplayer  # 플레이어 각각의 정보 갱신
+
+        return oldplayer, nowplayer, self.playerLocation[inputplayer]
+
+    def upgi(self, mal, nowLocation):
+
+        # 여기서 mal은 현재 이동중인 플레이어말, nowLocation은 플레이어말의 이동 될 위치
+        # pL = list(self.playerLocation.values())  # 말들의 현재 위치를  리스트로 생성
+
+        if len(mal[6:]) == 1:  # 입력된 말이 하나일 경우
+            for key, value in self.playerLocation.items():
+                if nowLocation == value:  # 현재 말과 위치가 같은 말 발견
+                    if key == mal:  # 현재 말과 위치가 같은 말이 현재 말과 같은 말일 경우 그냥 리턴 아무것도 안하고 리턴
+                        return
+                    elif key != mal:
+                        if (key == "player1" and mal == "player2") or (key == "player2" and mal == "player1"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = "player12"
+                            return mal
+                        elif (key == "player2" and mal == "player3") or (key == "player3" and mal == "player2"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player23'
+                            return mal
+                        elif (key == "player1" and mal == "player3") or (key == "player3" and mal == "player1"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player13'
+                            return mal
+                        elif (key == "player1" and mal == "player4") or (key == "player4" and mal == "player1"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player14'
+                            return mal
+                        elif (key == "player2" and mal == "player4") or (key == "player4" and mal == "player2"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player24'
+                            return mal
+                        elif (key == "player3" and mal == "player4") or (key == "player4" and mal == "player3"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player34'
+                            return mal
+                        elif (key == "player23" and mal == "player1") or (key == "player13" and mal == "player2") or (
+                                key == "player12" and mal == "player3"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player123'
+                            return mal
+                        elif (key == "player24" and mal == "player1") or (key == "player14" and mal == "player2") or (
+                                key == "player12" and mal == "player4"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player124'
+                            return mal
+                        elif (key == "player34" and mal == "player1") or (key == "player13" and mal == "player4") or (
+                                key == "player14" and mal == "player3"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player134'
+                            return mal
+                        elif (key == "player23" and mal == "player4") or (key == "player34" and mal == "player2") or (
+                                key == "player24" and mal == "player3"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player234'
+                            return mal
+                        elif (key == "player234" and mal == "player1") or (key == "player134" and mal == "player2") or (
+                                key == "player124" and mal == "player3") or (key == "player123" and mal == "player4"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player1234'
+                            return mal
+
+        elif len(mal[6:]) == 2:  # 입력된 말이 두개일 경우
+            for key, value in self.playerLocation.items():
+                if nowLocation == value:
+                    if key == mal:
+                        return
+                    elif key != mal:
+                        if (key == "player1" and mal == "player23") or (key == "player2" and mal == "player13") or (
+                                key == "player3" and mal == "player12"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player123'
+                            return mal
+                        elif (key == "player1" and mal == "player24") or (key == "player2" and mal == "player14") or (
+                                key == "player4" and mal == "player12"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player124'
+                            return mal
+                        elif (key == "player1" and mal == "player34") or (key == "player3" and mal == "player14") or (
+                                key == "player4" and mal == "player13"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player134'
+                            return mal
+                        elif (key == "player2" and mal == "player34") or (key == "player3" and mal == "player24") or (
+                                key == "player4" and mal == "player23"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player234'
+                            return mal
+                        elif (key == "player12" and mal == "player34") or (key == "player13" and mal == "player24") or (
+                                key == "player14" and mal == "player23") or (
+                                key == "player23" and mal == "player14") or (
+                                key == "player24" and mal == "player13") or (key == "player34" and mal == "player12"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player1234'
+                            return mal
+
+        elif len(mal[6:]) == 3:
+            for key, value in self.playerLocation.items():
+                if nowLocation == value:
+                    if key == mal:
+                        return
+                    elif key != mal:
+                        if (key == "player1" and mal == "player234") or (key == "player2" and mal == "player134") or (
+                                key == "player3" and mal == "player124") or (key == "player4" and mal == "player123"):
+                            self.playerLocation[key] = "noLocation"
+                            self.playerLocation[mal] = "noLocation"
+                            mal = 'player1234'
+                            return mal
+
+    # 플레이어말의 수에 따라(업고있는 말일 수 있으니) 골한 플레이어 추가
+    def goal(self, inputplayer):
+        if len(inputplayer[6:]) == 1:
+            self.goalplayer += 1
+        elif len(inputplayer[6:]) == 2:
+            self.goalplayer += 2
+        elif len(inputplayer[6:]) == 3:
+            self.goalplayer += 3
+        elif len(inputplayer[6:]) == 4:
+            self.goalplayer += 4
