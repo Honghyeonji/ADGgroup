@@ -20,7 +20,7 @@
    <property name="geometry">
     <rect>
      <x>750</x>
-     <y>60</y>
+     <y>40</y>
      <width>401</width>
      <height>41</height>
     </rect>
@@ -36,7 +36,7 @@
    <property name="geometry">
     <rect>
      <x>750</x>
-     <y>240</y>
+     <y>220</y>
      <width>401</width>
      <height>41</height>
     </rect>
@@ -68,7 +68,7 @@
    <property name="geometry">
     <rect>
      <x>750</x>
-     <y>280</y>
+     <y>260</y>
      <width>400</width>
      <height>120</height>
     </rect>
@@ -84,7 +84,7 @@
    <property name="geometry">
     <rect>
      <x>750</x>
-     <y>100</y>
+     <y>80</y>
      <width>400</width>
      <height>120</height>
     </rect>
@@ -100,7 +100,7 @@
    <property name="geometry">
     <rect>
      <x>920</x>
-     <y>420</y>
+     <y>390</y>
      <width>230</width>
      <height>90</height>
     </rect>
@@ -117,7 +117,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>920</x>
-     <y>520</y>
+     <y>480</y>
      <width>230</width>
      <height>90</height>
     </rect>
@@ -134,8 +134,8 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>760</x>
-     <y>550</y>
-     <width>141</width>
+     <y>590</y>
+     <width>381</width>
      <height>41</height>
     </rect>
    </property>
@@ -143,7 +143,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string notr="true">font: 20pt &quot;남양주 다산 B&quot;;</string>
    </property>
    <property name="text">
-    <string>(결과)</string>
+    <string>윷 결과: </string>
    </property>
   </widget>
   <widget class="QLabel" name="howToPlay">
@@ -190,7 +190,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>765</x>
-     <y>120</y>
+     <y>100</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -203,7 +203,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>860</x>
-     <y>120</y>
+     <y>100</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -216,7 +216,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>955</x>
-     <y>120</y>
+     <y>100</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -229,7 +229,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>1050</x>
-     <y>120</y>
+     <y>100</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -242,7 +242,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>1050</x>
-     <y>300</y>
+     <y>280</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -255,7 +255,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>765</x>
-     <y>300</y>
+     <y>280</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -268,7 +268,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>860</x>
-     <y>300</y>
+     <y>280</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -281,7 +281,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>955</x>
-     <y>300</y>
+     <y>280</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -290,7 +290,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can0_4">
+  <widget class="QLabel" name="can1_5">
    <property name="geometry">
     <rect>
      <x>627</x>
@@ -303,7 +303,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can0_3">
+  <widget class="QLabel" name="can1_4">
    <property name="geometry">
     <rect>
      <x>637</x>
@@ -316,7 +316,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can0_2">
+  <widget class="QLabel" name="can1_3">
    <property name="geometry">
     <rect>
      <x>636</x>
@@ -329,7 +329,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can0_1">
+  <widget class="QLabel" name="can1_2">
    <property name="geometry">
     <rect>
      <x>635</x>
@@ -342,7 +342,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can3_4">
+  <widget class="QLabel" name="can4_5">
    <property name="geometry">
     <rect>
      <x>627</x>
@@ -355,7 +355,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can0_0">
+  <widget class="QLabel" name="can1_1">
    <property name="geometry">
     <rect>
      <x>636</x>
@@ -368,7 +368,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can2_4">
+  <widget class="QLabel" name="can3_5">
    <property name="geometry">
     <rect>
      <x>48</x>
@@ -381,7 +381,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can3_0">
+  <widget class="QLabel" name="can4_1">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -394,7 +394,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can3_1">
+  <widget class="QLabel" name="can4_2">
    <property name="geometry">
     <rect>
      <x>278</x>
@@ -407,7 +407,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can3_2">
+  <widget class="QLabel" name="can4_3">
    <property name="geometry">
     <rect>
      <x>399</x>
@@ -420,7 +420,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can3_3">
+  <widget class="QLabel" name="can4_4">
    <property name="geometry">
     <rect>
      <x>520</x>
@@ -433,7 +433,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can2_3">
+  <widget class="QLabel" name="can3_4">
    <property name="geometry">
     <rect>
      <x>49</x>
@@ -446,7 +446,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can2_2">
+  <widget class="QLabel" name="can3_3">
    <property name="geometry">
     <rect>
      <x>49</x>
@@ -459,7 +459,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can2_1">
+  <widget class="QLabel" name="can3_2">
    <property name="geometry">
     <rect>
      <x>49</x>
@@ -472,7 +472,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can2_0">
+  <widget class="QLabel" name="can3_1">
    <property name="geometry">
     <rect>
      <x>49</x>
@@ -485,7 +485,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can1_4">
+  <widget class="QLabel" name="can2_5">
    <property name="geometry">
     <rect>
      <x>48</x>
@@ -498,7 +498,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can1_0">
+  <widget class="QLabel" name="can2_1">
    <property name="geometry">
     <rect>
      <x>510</x>
@@ -511,7 +511,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can1_2">
+  <widget class="QLabel" name="can2_3">
    <property name="geometry">
     <rect>
      <x>268</x>
@@ -524,7 +524,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can1_3">
+  <widget class="QLabel" name="can2_4">
    <property name="geometry">
     <rect>
      <x>151</x>
@@ -537,7 +537,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can1_1">
+  <widget class="QLabel" name="can2_2">
    <property name="geometry">
     <rect>
      <x>394</x>
@@ -563,7 +563,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can4_1">
+  <widget class="QLabel" name="can5_2">
    <property name="geometry">
     <rect>
      <x>431</x>
@@ -576,7 +576,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can4_0">
+  <widget class="QLabel" name="can5_1">
    <property name="geometry">
     <rect>
      <x>525</x>
@@ -589,7 +589,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can6_0">
+  <widget class="QLabel" name="can8_1">
    <property name="geometry">
     <rect>
      <x>436</x>
@@ -602,7 +602,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can6_1">
+  <widget class="QLabel" name="can8_2">
    <property name="geometry">
     <rect>
      <x>529</x>
@@ -615,7 +615,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can7_0">
+  <widget class="QLabel" name="can7_1">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -628,7 +628,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can7_1">
+  <widget class="QLabel" name="can7_2">
    <property name="geometry">
     <rect>
      <x>147</x>
@@ -641,7 +641,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can5_1">
+  <widget class="QLabel" name="can6_2">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -654,7 +654,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="can5_0">
+  <widget class="QLabel" name="can6_1">
    <property name="geometry">
     <rect>
      <x>147</x>
@@ -671,7 +671,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>750</x>
-     <y>440</y>
+     <y>400</y>
      <width>151</width>
      <height>51</height>
     </rect>
@@ -704,8 +704,8 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>760</x>
-     <y>660</y>
-     <width>141</width>
+     <y>640</y>
+     <width>391</width>
      <height>41</height>
     </rect>
    </property>
@@ -714,6 +714,22 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    </property>
    <property name="text">
     <string>플레이어턴</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="playHelper">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>690</y>
+     <width>391</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 20pt &quot;남양주 다산 B&quot;;</string>
+   </property>
+   <property name="text">
+    <string>게임진행도우미</string>
    </property>
   </widget>
   <zorder>background</zorder>
@@ -735,37 +751,38 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
   <zorder>player1_0Wait</zorder>
   <zorder>player1_1Wait</zorder>
   <zorder>player1_2Wait</zorder>
-  <zorder>can0_4</zorder>
-  <zorder>can0_3</zorder>
-  <zorder>can0_2</zorder>
-  <zorder>can0_1</zorder>
-  <zorder>can3_4</zorder>
-  <zorder>can0_0</zorder>
-  <zorder>can2_4</zorder>
-  <zorder>can3_0</zorder>
-  <zorder>can3_1</zorder>
-  <zorder>can3_2</zorder>
-  <zorder>can3_3</zorder>
-  <zorder>can2_3</zorder>
-  <zorder>can2_2</zorder>
-  <zorder>can2_1</zorder>
-  <zorder>can2_0</zorder>
+  <zorder>can1_5</zorder>
   <zorder>can1_4</zorder>
-  <zorder>can1_0</zorder>
-  <zorder>can1_2</zorder>
   <zorder>can1_3</zorder>
+  <zorder>can1_2</zorder>
+  <zorder>can4_5</zorder>
   <zorder>can1_1</zorder>
-  <zorder>canMain</zorder>
+  <zorder>can3_5</zorder>
   <zorder>can4_1</zorder>
-  <zorder>can4_0</zorder>
-  <zorder>can6_0</zorder>
-  <zorder>can6_1</zorder>
-  <zorder>can7_0</zorder>
-  <zorder>can7_1</zorder>
+  <zorder>can4_2</zorder>
+  <zorder>can4_3</zorder>
+  <zorder>can4_4</zorder>
+  <zorder>can3_4</zorder>
+  <zorder>can3_3</zorder>
+  <zorder>can3_2</zorder>
+  <zorder>can3_1</zorder>
+  <zorder>can2_5</zorder>
+  <zorder>can2_1</zorder>
+  <zorder>can2_3</zorder>
+  <zorder>can2_4</zorder>
+  <zorder>can2_2</zorder>
+  <zorder>canMain</zorder>
+  <zorder>can5_2</zorder>
   <zorder>can5_1</zorder>
-  <zorder>can5_0</zorder>
+  <zorder>can8_1</zorder>
+  <zorder>can8_2</zorder>
+  <zorder>can7_1</zorder>
+  <zorder>can7_2</zorder>
+  <zorder>can6_2</zorder>
+  <zorder>can6_1</zorder>
   <zorder>pNumChoose</zorder>
   <zorder>playerTurn</zorder>
+  <zorder>playHelper</zorder>
  </widget>
  <resources/>
  <connections/>

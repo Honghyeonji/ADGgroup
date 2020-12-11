@@ -16,8 +16,7 @@ class Player:
         self.name = ''  # 플레이어 닉네임
         self.resultYut = ''  # 도개걸윷모낙빽도 결과 문자열로 저장
         self.goalplayer = 0  # 골인한 말의 수 - main.py에서 move이벤트 한 후에 goal판정하는 데에 쓰일 변수
-
-        # self.canthow = 0 # 윷 던질 수 있는 횟수
+        self.chance = 0  # 윷 던질 수 있는 횟수
 
         self.mapCan = {'11': "empty", '12': "empty", '13': "empty", '14': "empty", '15': "empty",
                        '21': "empty", '22': "empty", '23': "empty", '24': "empty", '25': "empty",
@@ -29,12 +28,11 @@ class Player:
                        '81': "empty", '82': "empty",
                        '90': "empty"}  # 90은 제일 가운데 칸
 
-        self.playerLocation = {'player1': "noLocation", "player2": "noLocation", "player3": "noLocation",
-                               "player4": "noLocation",
-                               "player12": "noLocation", "player13": "noLocation", "player14": "noLocation",
-                               "player23": "noLocation", "player24": "noLocation", "player34": "noLocation",
-                               "player123": "noLocation", "player134": "noLocation", "player234": "noLocation",
-                               "player1234": "noLocation", }
+        self.playerLocation = {"player1": "noLocation", "player2": "noLocation", "player3": "noLocation",
+                               "player4": "noLocation", "player12": "noLocation", "player13": "noLocation",
+                               "player14": "noLocation", "player23": "noLocation", "player24": "noLocation",
+                               "player34": "noLocation", "player123": "noLocation", "player124": "noLocation",
+                               "player134": "noLocation", "player234": "noLocation", "player1234": "noLocation", }
 
         # 윷 확률 : 개(30%) 걸(26%) 도(12%) 빽도(12%) 낙(10%) 윷(5%) 모(5%)
         for i in range(100):
@@ -50,8 +48,24 @@ class Player:
                 self.yutRandoms.append(0)  # 낙
             elif i < 95:
                 self.yutRandoms.append(4)  # 윷
+                self.chance += 1
             else:
                 self.yutRandoms.append(5)  # 모
+                self.chance += 1
+            self.chance -= 1
+
+    def reset(self):
+        self.pYut = 0
+        self.name = ''
+        self.resultYut = ''
+        self.goalplayer = 0
+        self.chance = 0
+
+        for key in self.playerLocation.keys():
+            self.playerLocation[key] = "noLocation"
+
+        for key in self.mapCan.keys():
+            self.mapCan[key] = "empty"
 
     # 이동할 칸 수를 리턴하는 메소드
     def throw(self):
@@ -76,22 +90,27 @@ class Player:
         elif self.yutRandoms[resultNum] == 4:
             self.resultYut = '윷'
             self.pYut = 4
+            self.chance +=1
         elif self.yutRandoms[resultNum] == 5:
             self.resultYut = '모'
             self.pYut = 5
+            self.chance +=1
+        self.chance -= 1
 
 
     # 말 움직이는 함수
-    def move(self, inputplayer, rivalLocation):  # 라이벌로케이션은 이대로 말 잡기에서 수정되어서 리턴될 것임
+    def move(self, inputplayer):  # 라이벌로케이션은 이대로 말 잡기에서 수정되어서 리턴될 것임
 
         # 빽도였을 경우와 낙일경우도 추가해야함
 
         oldplayer = self.playerLocation[inputplayer]  # 원래 말이 서있던 위치
         nowplayer = self.playerLocation[inputplayer]  # 현재 말이 어느 위치에 서있는지
-
+        if nowplayer == "noLocation":
+            if self.pYut > 0:
+                nowplayer = str(10 + self.pYut)
         # 외곽선 이동, 1, 2번 줄인데 모서리에 안서있는 경우(모서리에 서있으면 대각전 진입) 혹은 3, 4번 줄일 경우
         # nowplayer는 현재 말의 위치라서 "OO" 형식, 첫번째 숫자는 몇번째 선에 있는지, 두번째 숫자는 그 선의 몇 번째 칸에 있는지를 표현
-        if ((1 <= int(nowplayer[0]) <= 2) and (int(nowplayer[1]) < 5)) or (3 <= int(nowplayer[0]) <= 4):
+        elif ((1 <= int(nowplayer[0]) <= 2) and (int(nowplayer[1]) < 5)) or (3 <= int(nowplayer[0]) <= 4):
             # 마지막 줄이었을 경우
             if nowplayer[0] == "4":
                 nowplayer = str(int(nowplayer) + self.pYut)
@@ -100,36 +119,56 @@ class Player:
                     self.playerLocation[inputplayer] = "noLocation"  # 현재 말의 위치 정보에서 위치 없앰
                     self.goal(inputplayer)  # 몇개의 말이 골을 했는지 판정 -> 골한 말의 수 갱신
                     self.mapCan[oldplayer] = "empty"  # 현재 칸의 상태에서 원래 말이 서있던 위치 비움
+                # 빽도로 인해서 41 -> 35로 이동해야할 경우
+                elif int(nowplayer[1]) == 0:
+                    nowplayer = "35"
 
             # 마지막 줄이 아니였을 경우
             else:
                 nowplayer = str(int(nowplayer) + self.pYut)
                 # 꺾여진 선 이동 (n번째 줄에서 n+1번째 줄로 넘어갈 때)
                 if int(nowplayer[1]) > 5:
-                    nowplayer = str(int(nowplayer) - 5 + 10 + self.pYut)
+                    nowplayer = str(int(nowplayer) - 5 + 10)
+                # 빽도
+                elif int(nowplayer[1]) == 0:
+                    if int(nowplayer[0]) == 1:
+                        nowplayer = "45"
+                    else:
+                        nowplayer = str(int(nowplayer) - 5)
 
         # 1번째 줄 모서리에서 대각선 진입
         elif nowplayer == "15":
-            nowplayer = str(int(nowplayer) - 5 + 40 + self.pYut)  # 일단 5번째 줄로 이동
-            if nowplayer[1] == "3":  # 대각선들 줄은 칸의 수가 2개씩 밖에 없기 때문에 두번째 숫자가 3일 경우 가운데 칸
-                nowplayer = "90"
-            elif 4 <= int(nowplayer[1]) <= 5:  # 두번째 숫자가 4 or 5일 경우 7번째 줄로 재설정(이어지는 대각선)
-                nowplayer = str(int(nowplayer) - 3 + 20)
+            if self.pYut > 0:
+                nowplayer = str(int(nowplayer) - 5 + 40 + self.pYut)  # 일단 5번째 줄로 이동
+                if nowplayer[1] == "3":  # 대각선들 줄은 칸의 수가 2개씩 밖에 없기 때문에 두번째 숫자가 3일 경우 가운데 칸
+                    nowplayer = "90"
+                elif 4 <= int(nowplayer[1]) <= 5:  # 두번째 숫자가 4 or 5일 경우 7번째 줄로 재설정(이어지는 대각선)
+                    nowplayer = str(int(nowplayer) - 3 + 20)
+            # 빽도
+            else:
+                nowplayer = str(int(nowplayer) + self.pYut)
         # 2번째 줄 모서리에서 대각선 진입
         elif nowplayer == "25":
             # 위 코드와 동일
-            nowplayer = str(int(nowplayer) - 5 + 40 + self.pYut)
-            if nowplayer[1] == "3":
-                nowplayer = "90"
-            elif 4 <= int(nowplayer[1]) <= 5:
-                nowplayer = str(int(nowplayer) - 3 + 20)
+            if self.pYut > 0:
+                nowplayer = str(int(nowplayer) - 5 + 40 + self.pYut)
+                if nowplayer[1] == "3":
+                    nowplayer = "90"
+                elif 4 <= int(nowplayer[1]) <= 5:
+                    nowplayer = str(int(nowplayer) - 3 + 20)
+            # 빽도
+            else:
+                nowplayer = str(int(nowplayer) + self.pYut)
 
         # 대각선에 있을 경우
         elif int(nowplayer[0]) in range(5, 10):
             # 플레이어말이 메인칸 전 대각선에 있을 경우 (5번째, 6번째 줄에 있을 경우)
             if int(nowplayer[0]) in range(5, 7):
                 nowplayer = str(int(nowplayer) + self.pYut)
-                if nowplayer[1] == "3":
+                # 51 or 61에서 빽도일 경우 꼭짓점으로 다시 이동
+                if nowplayer[1] == "0":
+                    nowplayer = str(int(nowplayer) - 35)
+                elif nowplayer[1] == "3":
                     nowplayer = "90"
                 elif 4 <= int(nowplayer[1]) <= 5:
                     nowplayer = str(int(nowplayer) - 3 + 20)
@@ -151,7 +190,10 @@ class Player:
             # 플레이어말이 메인칸 후 대각선에 있을 경우 (7번째, 8번째 줄에 있을 경우)
             elif int(nowplayer[0]) in range(7, 9):
                 nowplayer = str(int(nowplayer) + self.pYut)
-                if nowplayer[1] == "3":  # 두번째 숫자가 3일 경우
+                # 71 or 81에서 빽도일 경우 메인칸으로 이동
+                if nowplayer[1] == "0":
+                    nowplayer = "90"
+                elif nowplayer[1] == "3":  # 두번째 숫자가 3일 경우
                     if nowplayer[0] == "7":  # 7번째줄(왼쪽 아래 대각선)에 있던 플레이어 말은 왼쪽 아래 꼭짓점칸으로 이동
                         nowplayer = "35"
                     elif nowplayer[0] == "8":  # 8번째줄(오른쪽 아래 대각선)에 있던 플레이어 말은 오른쪽 아래 꼭짓점칸으로 이동
@@ -165,22 +207,28 @@ class Player:
                         self.mapCan[nowplayer] = "empty"
 
             elif nowplayer == "90":  # 정가운데 칸에 있을 경우
-                nowplayer = str(80 + self.pYut)  # 무조건 골쪽으로 이동해야하니 8번째 줄에서부터 시작(80에서 시작)
-                if nowplayer == "83":  # 83일경우 골인지점에 위치
-                    nowplayer = "45"
-                elif int(nowplayer[1]) > 3:  # 골인
-                    self.playerLocation[inputplayer] = "noLocation"
-                    self.goal(inputplayer)
-                    self.mapCan[nowplayer] = "empty"
+                if self.pYut > 0:
+                    nowplayer = str(80 + self.pYut)  # 무조건 골쪽으로 이동해야하니 8번째 줄에서부터 시작(80에서 시작)
+                    if nowplayer == "83":  # 83일경우 골인지점에 위치
+                        nowplayer = "45"
+                    elif int(nowplayer[1]) > 3:  # 골인
+                        self.playerLocation[inputplayer] = "noLocation"
+                        self.goal(inputplayer)
+                        self.mapCan[nowplayer] = "empty"
+                # 빽도
+                elif self.pYut == -1:
+                    nowplayer = "62"
 
         # 말업기가 됐을 경우 현재플레이어말 갱신,
         inputplayer = self.upgi(inputplayer, nowplayer)
 
-        self.mapCan[oldplayer] = "empty"
+        if oldplayer != "noLocation":
+            self.mapCan[oldplayer] = "empty"
         self.mapCan[nowplayer] = inputplayer  # 맵 정보 갱신
         self.playerLocation[inputplayer] = nowplayer  # 플레이어 각각의 정보 갱신
+        self.pYut = 0
 
-        return oldplayer, nowplayer, self.playerLocation[inputplayer]
+        return nowplayer
 
     def upgi(self, mal, nowLocation):
 
@@ -191,7 +239,7 @@ class Player:
             for key, value in self.playerLocation.items():
                 if nowLocation == value:  # 현재 말과 위치가 같은 말 발견
                     if key == mal:  # 현재 말과 위치가 같은 말이 현재 말과 같은 말일 경우 그냥 리턴 아무것도 안하고 리턴
-                        return
+                        return mal
                     elif key != mal:
                         if (key == "player1" and mal == "player2") or (key == "player2" and mal == "player1"):
                             self.playerLocation[key] = "noLocation"
@@ -258,7 +306,7 @@ class Player:
             for key, value in self.playerLocation.items():
                 if nowLocation == value:
                     if key == mal:
-                        return
+                        return mal
                     elif key != mal:
                         if (key == "player1" and mal == "player23") or (key == "player2" and mal == "player13") or (
                                 key == "player3" and mal == "player12"):
@@ -297,7 +345,7 @@ class Player:
             for key, value in self.playerLocation.items():
                 if nowLocation == value:
                     if key == mal:
-                        return
+                        return mal
                     elif key != mal:
                         if (key == "player1" and mal == "player234") or (key == "player2" and mal == "player134") or (
                                 key == "player3" and mal == "player124") or (key == "player4" and mal == "player123"):
@@ -305,6 +353,8 @@ class Player:
                             self.playerLocation[mal] = "noLocation"
                             mal = 'player1234'
                             return mal
+        return mal
+
 
     # 플레이어말의 수에 따라(업고있는 말일 수 있으니) 골한 플레이어 추가
     def goal(self, inputplayer):
@@ -316,3 +366,11 @@ class Player:
             self.goalplayer += 3
         elif len(inputplayer[6:]) == 4:
             self.goalplayer += 4
+
+
+# p1 = Player()
+# p1.chance += 1
+# p1.throw()
+# movedcan = p1.move(input())
+# print(p1.resultYut)
+# print(movedcan)

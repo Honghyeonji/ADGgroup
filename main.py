@@ -16,7 +16,7 @@ port = 2020
 
 formGame = uic.loadUiType("practice.ui")[0]
 
-class WindowClass(QMainWindow, formGame) :
+class WindowClass(QMainWindow, formGame):
     def __init__(self) :
         super().__init__()
         self.setupUi(self)
@@ -29,40 +29,50 @@ class WindowClass(QMainWindow, formGame) :
         self.background.setStyleSheet('image:url(backgroundEx.png)')
 
         # 플레이어 말 이미지 설정
-        self.player1img = {1: 'image:url(player1_1.png)', 2: 'image:url(player1_2.png)', 3: 'image:url(player1_3.png)', 4: 'image:url(player1_4.png)',
-                           12: 'image:url(player1_12.png)', 13: 'image:url(player1_13.png)', 14: 'image:url(player1_14.png)',
-                           23: 'image:url(player1_23.png)', 24: 'image:url(player1_24.png)',
-                           123: 'image:url(player1_123.png)', 124: 'image:url(player1_124.png)',
-                           234: 'image:url(player1_234.png)', 1234: 'image:url(player1_1234.png)'}
-        self.player2img = {1: 'image:url(player2_1.png)', 2: 'image:url(player2_2.png)', 3: 'image:url(player2_3.png)', 4: 'image:url(player2_4.png)',
-                           12: 'image:url(player2_12.png)', 13: 'image:url(player2_13.png)', 14: 'image:url(player2_14.png)',
-                           23: 'image:url(player2_23.png)', 24: 'image:url(player2_24.png)',
-                           123: 'image:url(player2_123.png)', 124: 'image:url(player2_124.png)',
-                           234: 'image:url(player2_234.png)', 1234: 'image:url(player2_1234.png)'}
+        self.player1img = {"player1": 'image:url(player1_1.png)', "player2": 'image:url(player1_2.png)',
+                           "player3": 'image:url(player1_3.png)', "player4": 'image:url(player1_4.png)',
+                           "player12": 'image:url(player1_12.png)', "player13": 'image:url(player1_13.png)',
+                           "player14": 'image:url(player1_14.png)', "player23": 'image:url(player1_23.png)',
+                           "player24": 'image:url(player1_24.png)', "player34": 'image:url(player1_34.png)',
+                           "player123": 'image:url(player1_123.png)', "player124": 'image:url(player1_124.png)',
+                           "player134": 'image:url(player1_134.png)', "player234": 'image:url(player1_234.png)',
+                           "player1234": 'image:url(player1_1234.png)'}
+        self.player2img = {"player1": 'image:url(player2_1.png)', "player2": 'image:url(player2_2.png)',
+                           "player3": 'image:url(player2_3.png)', "player4": 'image:url(player2_4.png)',
+                           "player12": 'image:url(player2_12.png)', "player13": 'image:url(player2_13.png)',
+                           "player14": 'image:url(player2_14.png)', "player23": 'image:url(player2_23.png)',
+                           "player24": 'image:url(player2_24.png)', "player34": 'image:url(player2_34.png)',
+                           "player123": 'image:url(player2_123.png)', "player124": 'image:url(player2_124.png)',
+                           "player134": 'image:url(player2_134.png)', "player234": 'image:url(player2_234.png)',
+                           "player1234": 'image:url(player2_1234.png)'}
 
         # 플레이어 말 대기 칸
         self.playerWait = [[self.player0_0Wait, self.player0_1Wait, self.player0_2Wait, self.player0_3Wait],
-                      [self.player1_0Wait, self.player1_1Wait, self.player1_2Wait, self.player1_3Wait]]
+                           [self.player1_0Wait, self.player1_1Wait, self.player1_2Wait, self.player1_3Wait]]
         self.emptyCan = "background-color: rgba(255, 255, 255, 0);"    # 말이 놓여져있지 않은 투명한 can 적용을 위한 배경값 설정
 
         # 게임판
-        self.cans = { '00':self.can0_0, '01':self.can0_1, '02':self.can0_2, '03':self.can0_3, '04':self.can0_4,
-                      '10':self.can1_0, '11':self.can1_1, '12':self.can1_2, '13':self.can1_3, '14':self.can1_4,
-                      '20':self.can2_0, '21':self.can2_1, '22':self.can2_2, '23':self.can2_3, '24':self.can2_4,
-                      '30':self.can3_0, '31':self.can3_1, '32':self.can3_2, '33':self.can3_3, '34':self.can3_4,
-                      '40':self.can4_0, '41':self.can4_1,
-                      '50':self.can5_0, '51':self.can5_1,
-                      '60':self.can6_0, '61':self.can6_1,
-                      '70':self.can7_0, '71':self.can7_1, }
-
-        # self.cansWH = { '00': "empty", '01': "empty", '02': "empty", '03': "empty", '04': "empty",
-        #                 '10': "empty", '11': "empty", '12': "empty", '13': "empty", '14': "empty",
-        #                 '20': "empty", '21': "empty", '22': "empty", '23': "empty", '24': "empty",
-        #                 '30': "empty", '31': "empty", '32': "empty", '33': "empty", '34': "empty",
-        #                 '40': "empty", '41': "empty",
-        #                 '50': "empty", '51': "empty",
-        #                 '60': "empty", '61': "empty",
-        #                 '70': "empty", '71': "empty", }
+        self.cans = {'11': self.can1_1, '12': self.can1_2, '13': self.can1_3, '14': self.can1_4, '15': self.can1_5,
+                     '21': self.can2_1, '22': self.can2_2, '23': self.can2_3, '24': self.can2_4, '25': self.can2_5,
+                     '31': self.can3_1, '32': self.can3_2, '33': self.can3_3, '34': self.can3_4, '35': self.can3_5,
+                     '41': self.can4_1, '42': self.can4_2, '43': self.can4_3, '44': self.can4_4, '45': self.can4_5,
+                     '51': self.can5_1, '52': self.can5_2,
+                     '61': self.can6_1, '62': self.can6_2,
+                     '71': self.can7_1, '72': self.can7_2,
+                     '81': self.can8_1, '82': self.can8_2,
+                     '90': self.canMain}
+        self.cansimage = {'11': self.emptyCan, '12': self.emptyCan, '13': self.emptyCan,
+                          '14': self.emptyCan, '15': self.emptyCan, '21': self.emptyCan,
+                          '22': self.emptyCan, '23': self.emptyCan, '24': self.emptyCan,
+                          '25': self.emptyCan, '31': self.emptyCan, '32': self.emptyCan,
+                          '33': self.emptyCan, '34': self.emptyCan, '35': self.emptyCan,
+                          '41': self.emptyCan, '42': self.emptyCan, '43': self.emptyCan,
+                          '44': self.emptyCan, '45': self.emptyCan, '51': self.emptyCan,
+                          '52': self.emptyCan, '61': self.emptyCan, '62': self.emptyCan,
+                          '71': self.emptyCan, '72': self.emptyCan, '81': self.emptyCan,
+                          '82': self.emptyCan, '90': self.emptyCan}
+        # 콤보박스에서 이동시킬 말 선택했을 때 이동함수에 인자로 넣어줄 값 바꿔줄 딕셔너리
+        self.players = {'1번 말': 'player1', '2번 말': 'player2', '3번 말': 'player3', '4번 말': 'player4'}
 
         # player1 화면 기준 player2Turn일 경우 버튼비활성화
         # 이건 소켓서버클라이언트 성공하면 씁니다.
@@ -73,15 +83,18 @@ class WindowClass(QMainWindow, formGame) :
         #     self.moveButton.setDisable(True)
         #     self.randomYut.setDisable(True)
 
-        self.moveButton.clicked.connect(self.MoveButtonClicked)
-        self.randomYut.clicked.connect(self.RandomYutButtonClicked)
+        self.moveButton.clicked.connect(self.moveButtonClicked)
+        self.randomYut.clicked.connect(self.randomYutButtonClicked)
 
         self.turnnum = 0
-        self.turn = {1:self.p1.name, 2:self.p2.name}
+        self.turn = {1: self.p1.name, 2: self.p2.name}
 
-        self.startGame() # 승자가 정해지고 게임을 다시 할 때 쓰임
+        self.startGame()  # 승자가 정해지고 게임을 다시 할 때 쓰임
 
     def startGame(self):
+        # 다시 시작시 p1, p2 리셋
+        self.p1.reset()
+        self.p2.reset()
         # p1, p2 닉네임 입력창
         # 일단 위의 입력칸이 플레이어1의 닉네임, 아래 입력칸이 플레이어2의 닉네임입니다. 추후에 디자인 수정하겠습니다.
         # 입력창의 기본값으로 해둔 닉네임을 입력하세요로 들어오면 player1은 쿠민이가 닉네임 기본값으로, player2는 국냥이가 닉네임 기본값으로 들어갑니다.
@@ -93,56 +106,157 @@ class WindowClass(QMainWindow, formGame) :
             self.p2.name = inputchang.inputName_2.text() if inputchang.inputName_2.text() != "닉네임을 입력하세요" else "국냥이"
             self.player2Name.setText(self.p2.name)
 
-        pygame.mixer.music.load("music.wav")  #게임 시작 후 배경음악 재생 #Music: https://www.bensound.com
+        # 게임 시작 후 배경음악 재생 #Music: https://www.bensound.com
+        pygame.mixer.music.load("music.wav")
         pygame.mixer.music.play(-1)
 
         # 플레이어 말 대기 칸
         for i in range(4):
-            self.playerWait[0][i].setStyleSheet(self.player1img[i + 1])
+            self.playerWait[0][i].setStyleSheet(self.player1img["player" + str(i + 1)])
         for i in range(4):
-            self.playerWait[1][i].setStyleSheet(self.player2img[i + 1])
+            self.playerWait[1][i].setStyleSheet(self.player2img["player" + str(i + 1)])
 
-        self.turnnum = random.randrange(1, 3)  # 선플레이어는 랜덤
+        # 선플레이어 정하기, 선플레이어는 랜덤
+        self.turnnum = random.randrange(1, 3)
+        if self.turnnum == 1: self.p1.chance += 1
+        elif self.turnnum == 2: self.p2.chance += 1
         self.turn = {1: self.p1.name, 2: self.p2.name}
+        self.yutResult.setText(self.turn[self.turnnum] + "님의 윷 : ")
         self.playerTurn.setText("현재 차례: " + self.turn[self.turnnum] + "님")
+        self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
 
-        self.canMain.setStyleSheet(self.emptyCan)
-        for key, vaule in self.cans.items():
-            self.cans[key].setStyleSheet(self.emptyCan)
-
+        # 윷놀이판 초기화
+        for key in self.cansimage.keys():
+            self.cansimage[key] = self.emptyCan
+        for key in self.cans.keys():
+            self.cans[key].setStyleSheet(self.cansimage[key])
+        print("success1")
 
         # 윷 던지고 말 이동하기
-    def MoveButtonClicked(self):
-        # 가정으로 만든 코드이고 오류 유발해서 주석처리 해놨습니다.
-        # if(self.yutResult.text() != "윷 결과: "):
-        #     if(self.turn == 1):
-        #         i, j, road = p1.(윷이동하는 함수)(self.pNumChoose.text(), self.resultyut)
-        #         self.cans[i].setStyleSheet(self.emptyCan)
-        #         if(int(j) != -1): self.cans[j].setStyleSheet(road)
-        #         # 이건 그냥 제가 가정해서 만들어본겁니다. 만약 다 dic형식으로 한다면 i는 말이 떠난 칸의 위치, j는 말이 있는 위치, road는 말의 이미지경로
-        #         # 이 함수 안에서 말의 번호에 따라 다르게 인자를 넣고 다르게 리턴값을 받는다는 가정입니다!
-        #         # turn을 바꾸는 판정도 정해야합니다~!
-        #     if(self.turn == 2):
-        #
-        # self.yutResult.setText("윷 결과: ")
-        pass
+    def moveButtonClicked(self):
+        # 말 이동, 업기, 잡기 실행
+        if self.turnnum == 1:
+            movedcan = self.p1.move(self.players[self.pNumChoose.currentText()])
+            self.japgi(movedcan)
+            print("success2")
+            # 플레이어1과 플레이어2의 말들의 위치 합쳐서 윷놀이판 갱신하기
+            # 1. 윷놀이판 초기화
+            for key in self.cansimage.keys():
+                self.cansimage[key] = self.emptyCan
+            print("success3")
+            # 플레이어1 위치부터 맵에 갱신
+            for key, value in self.p1.mapCan.items():
+                if value != "empty":  # 맵위에 있는 플레이어색출
+                    # 맵위에 서있는 플레이어 이름의 이미지 self.player1img[key] , value - 칸좌표
+                    self.cansimage[key] = self.player1img[value]
+                elif value == "empty":
+                    self.cansimage[key] = self.emptyCan
+            print("success4")
+            # 플레이어2 위치 중 빈칸이 아닌 것들만 추가
+            for key, value in self.p2.mapCan.items():
+                if value != "empty" and self.cansimage[key] == self.emptyCan:
+                    self.cansimage[key] = self.player2img[value]
+            print("success5")
+            # 윷놀이판 갱신
+            for key in self.cans.keys():
+                self.cans[key].setStyleSheet(self.cansimage[key])
+            print("success6")
+            # 플레이어 말이 모두 골인했을 때 종료 메시지 뜨기
+            if self.p1.goalplayer == 4:
+                self.ExitGame()
 
+            # 플레이어1의 찬스가 더이상 없으면 플레이어2로 턴 넘기기
+            if self.p1.chance == 0:
+                self.turnnum = 2
+                self.p2.chance = 1
+                self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
+                self.playerTurn.setText("현재 차례: " + self.turn[self.turnnum] + "님")
+            # 있으면 플레이어2차례 유지
+            else:
+                self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
+            print("success7")
 
+        elif self.turnnum == 2:
+            # 말 이동, 업기, 잡기 실행
+            movedcan = self.p2.move(self.players[self.pNumChoose.currentText()])
+            self.japgi(movedcan)
+            print("success2")
+            # 플레이어1과 플레이어2의 말들의 위치 합쳐서 윷놀이판 갱신하기
+            # 1. 윷놀이판 초기화
+            for key in self.cansimage.keys():
+                self.cansimage[key] = self.emptyCan
+            print("success3")
+            # 플레이어1 위치부터 맵에 갱신
+            for key, value in self.p1.mapCan.items():
+                if value != "empty":  # 맵위에 있는 플레이어색출
+                    # 맵위에 서있는 플레이어 이름의 이미지 self.player1img[key] , value - 칸좌표
+                    self.cansimage[key] = self.player1img[value]
+                elif value == "empty":
+                    self.cansimage[key] = self.emptyCan
+            print("success4")
+            # 플레이어2 위치 중 빈칸이 아닌 것들만 추가
+            # 플레이해보니 플레이어2의 말이 골인했을 때 여기서 막힘
+            for key, value in self.p2.mapCan.items():
+                if value != "empty" and self.cansimage[key] == self.emptyCan:
+                    self.cansimage[key] = self.player2img[value]
+            print("success5")
+            # 윷놀이판 갱신
+            for key in self.cans.keys():
+                self.cans[key].setStyleSheet(self.cansimage[key])
+            print("success6")
+            # 플레이어 말이 모두 골인했을 때 종료 메시지 뜨기
+            if self.p2.goalplayer == 4:
+                self.ExitGame()
 
-    def RandomYutButtonClicked(self):
-        # 윷 던지는 함수
-        # 오류 유발로 주석처리 해놨습니다.
-        # if(self.turn == 1):
-        #     self.p1.throw()
-        #     self.yutResult.setText("윷 결과: " + self.p1.resultyut)
-        # elif(self.turn == 2):
-        #     self.p1.throw()
-        #     self.yutResult.setText("윷 결과: " + self.p2.resultyut)
-        pass
+            # 플레이어2의 찬스가 더이상 없으면 플레이어1로 턴 넘기기
+            if self.p2.chance == 0:
+                self.turnnum = 1
+                self.p1.chance = 1
+                self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
+                self.playerTurn.setText("현재 차례: " + self.turn[self.turnnum] + "님")
+            # 있으면 플레이어2차례 유지
+            else:
+                self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
+            print("success7")
 
+    # 윷던지기 함수
+    def randomYutButtonClicked(self):
+        # 낙일경우 이동 x 바로 턴 체인지
+        # 플레이어1의 턴일 경우
+        if self.turnnum == 1:
+            if self.p1.chance >= 1:
+                self.p1.throw()
+                self.yutResult.setText(self.p1.name + "님의 윷 : " + self.p1.resultYut)
+                # 낙일경우
+                if self.p1.pYut == 0:
+                    # 찬스가 더이상 없으면 상대방한테 턴 넘김
+                    if self.p1.chance == 0:
+                        self.turnnum = 2
+                        self.p2.chance = 1
+                    self.playerTurn.setText("현재 차례: " + self.turn[self.turnnum] + "님")
+                    self.playHelper.setText(self.turn[self.turnnum]+"님 윷을 던져주세요.")
+                # 낙이 아닐 경우
+                else:
+                    self.playHelper.setText(self.turn[self.turnnum]+"님 말을 이동시켜주세요")
+        # 플레이어2의 턴일 경우
+        elif self.turnnum == 2:
+            if self.p2.chance >= 1:
+                self.p2.throw()
+                self.yutResult.setText(self.p2.name + "님의 윷 : " + self.p2.resultYut)
+                if self.p2.pYut == 0:
+                    if self.p2.chance == 0:
+                        self.turnnum = 1
+                        self.p1.chance = 1
+                    self.playerTurn.setText("현재 차례: " + self.turn[self.turnnum] + "님")
+                    self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
+                else:
+                    self.playHelper.setText(self.turn[self.turnnum] + "님 말을 이동시켜주세요")
+        print("successrandom")
+
+    # 승자 정해졌을 때 나오는 창
     def ExitGame(self):
         result = QMessageBox.information(self
-                                         , '게임 종료'
+                                         , self.turn[self.turnnum]
                                          , '다시시작 : Yes, 종료 : No'
                                          , QMessageBox.Ok | QMessageBox.No)
 
@@ -150,6 +264,27 @@ class WindowClass(QMainWindow, formGame) :
             self.startGame()
         else:
             self.close()
+
+    def japgi(self, nowLocation):
+        # 플레이어1의 턴일 경우 플레이어2의 로케이션과 플레이어1 로케이션이 겹치지는지 확인 후 겹치면 플레이어2 해당 로케이션을 초기화
+        if self.turnnum == 1:
+            for key, value in self.p2.playerLocation.items():
+                if nowLocation == value:
+                    self.p2.playerLocation[key] = "noLocation"
+                    self.p1.chance = self.p1.chance + 1
+                    for k, v in self.p2.mapCan.items():
+                        if key == v:
+                            self.p2.mapCan[k] = "empty"
+        # 플레이어2의 턴일 경우 플레이어1의 로케이션과 플레이어2 로케이션이 겹치지는지 확인 후 겹치면 플레이어1 해당 로케이션을 초기화
+        elif self.turnnum == 2:
+            for key, value in self.p1.playerLocation.items():
+                if nowLocation == value:
+                    self.p1.playerLocation[key] = "noLocation"
+                    self.p2.chance = self.p2.chance + 1
+                    for k, v in self.p1.mapCan.items():
+                        if key == v:
+                            self.p2.mapCan[k] = "empty"
+
 
 
 if __name__ == "__main__" :
