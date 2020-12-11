@@ -137,7 +137,8 @@ class WindowClass(QMainWindow, formGame):
         # 말 이동, 업기, 잡기 실행
         if self.turnnum == 1:
             movedcan = self.p1.move(self.players[self.pNumChoose.currentText()])
-            self.japgi(movedcan)
+            if movedcan != "goal":
+                self.japgi(movedcan)
             print("success2")
             # 플레이어1과 플레이어2의 말들의 위치 합쳐서 윷놀이판 갱신하기
             # 1. 윷놀이판 초기화
@@ -179,7 +180,8 @@ class WindowClass(QMainWindow, formGame):
         elif self.turnnum == 2:
             # 말 이동, 업기, 잡기 실행
             movedcan = self.p2.move(self.players[self.pNumChoose.currentText()])
-            self.japgi(movedcan)
+            if movedcan != "goal":
+                self.japgi(movedcan)
             print("success2")
             # 플레이어1과 플레이어2의 말들의 위치 합쳐서 윷놀이판 갱신하기
             # 1. 윷놀이판 초기화
@@ -283,7 +285,7 @@ class WindowClass(QMainWindow, formGame):
                     self.p2.chance = self.p2.chance + 1
                     for k, v in self.p1.mapCan.items():
                         if key == v:
-                            self.p2.mapCan[k] = "empty"
+                            self.p1.mapCan[k] = "empty"
 
 
 

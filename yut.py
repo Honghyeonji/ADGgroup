@@ -119,6 +119,7 @@ class Player:
                     self.playerLocation[inputplayer] = "noLocation"  # 현재 말의 위치 정보에서 위치 없앰
                     self.goal(inputplayer)  # 몇개의 말이 골을 했는지 판정 -> 골한 말의 수 갱신
                     self.mapCan[oldplayer] = "empty"  # 현재 칸의 상태에서 원래 말이 서있던 위치 비움
+                    return "goal"
                 # 빽도로 인해서 41 -> 35로 이동해야할 경우
                 elif int(nowplayer[1]) == 0:
                     nowplayer = "35"
@@ -186,6 +187,7 @@ class Player:
                         self.playerLocation[inputplayer] = "noLocation"
                         self.goal(inputplayer)
                         self.mapCan[nowplayer] = "empty"
+                        return "goal"
 
             # 플레이어말이 메인칸 후 대각선에 있을 경우 (7번째, 8번째 줄에 있을 경우)
             elif int(nowplayer[0]) in range(7, 9):
@@ -205,6 +207,7 @@ class Player:
                         self.playerLocation[inputplayer] = "noLocation"
                         self.goal(inputplayer)
                         self.mapCan[nowplayer] = "empty"
+                        return "goal"
 
             elif nowplayer == "90":  # 정가운데 칸에 있을 경우
                 if self.pYut > 0:
@@ -215,6 +218,7 @@ class Player:
                         self.playerLocation[inputplayer] = "noLocation"
                         self.goal(inputplayer)
                         self.mapCan[nowplayer] = "empty"
+                        return "goal"
                 # 빽도
                 elif self.pYut == -1:
                     nowplayer = "62"
