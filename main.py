@@ -72,7 +72,10 @@ class WindowClass(QMainWindow, formGame):
                           '71': self.emptyCan, '72': self.emptyCan, '81': self.emptyCan,
                           '82': self.emptyCan, '90': self.emptyCan}
         # 콤보박스에서 이동시킬 말 선택했을 때 이동함수에 인자로 넣어줄 값 바꿔줄 딕셔너리
-        self.players = {'1번 말': 'player1', '2번 말': 'player2', '3번 말': 'player3', '4번 말': 'player4'}
+        self.players = {'1번 말': 'player1', '2번 말': 'player2', '3번 말': 'player3', '4번 말': 'player4',
+                        '12번 말': 'player12', '13번 말': 'player13', '14번 말': 'player14', '23번 말': 'player23',
+                        '24번 말': 'player24', '34번 말': 'player34', '123번 말': 'player123', '124번 말': 'player124',
+                        '134번 말': 'player134', '234번 말': 'player234', '1234번 말': 'player1234'}
 
         # player1 화면 기준 player2Turn일 경우 버튼비활성화
         # 이건 소켓서버클라이언트 성공하면 씁니다.
@@ -89,8 +92,9 @@ class WindowClass(QMainWindow, formGame):
         self.turnnum = 0
         self.turn = {1: self.p1.name, 2: self.p2.name}
 
-        self.startGame()  # 승자가 정해지고 게임을 다시 할 때 쓰임
+        self.startGame()
 
+    # 승자가 정해지고 게임을 다시 할 때 쓰임
     def startGame(self):
         # 다시 시작시 p1, p2 리셋
         self.p1.reset()
@@ -134,92 +138,101 @@ class WindowClass(QMainWindow, formGame):
 
         # 윷 던지고 말 이동하기
     def moveButtonClicked(self):
-        # 말 이동, 업기, 잡기 실행
+        inputplayer = self.players[self.pNumChoose.currentText()]
         if self.turnnum == 1:
-            movedcan = self.p1.move(self.players[self.pNumChoose.currentText()])
-            if movedcan != "goal":
-                self.japgi(movedcan)
-            print("success2")
-            # 플레이어1과 플레이어2의 말들의 위치 합쳐서 윷놀이판 갱신하기
-            # 1. 윷놀이판 초기화
-            for key in self.cansimage.keys():
-                self.cansimage[key] = self.emptyCan
-            print("success3")
-            # 플레이어1 위치부터 맵에 갱신
-            for key, value in self.p1.mapCan.items():
-                if value != "empty":  # 맵위에 있는 플레이어색출
-                    # 맵위에 서있는 플레이어 이름의 이미지 self.player1img[key] , value - 칸좌표
-                    self.cansimage[key] = self.player1img[value]
-                elif value == "empty":
+            # 현재 이동시킬 말이 이동이 가능한지 확인
+            if self.usefindP(inputplayer):
+                # 말 이동, 업기, 잡기 실행
+                movedcan = self.p1.move(inputplayer)
+                if movedcan != "goal" and movedcan != "no":
+                    self.japgi(movedcan)
+                print("success2")
+                # 플레이어1과 플레이어2의 말들의 위치 합쳐서 윷놀이판 갱신하기
+                # 1. 윷놀이판 초기화
+                for key in self.cansimage.keys():
                     self.cansimage[key] = self.emptyCan
-            print("success4")
-            # 플레이어2 위치 중 빈칸이 아닌 것들만 추가
-            for key, value in self.p2.mapCan.items():
-                if value != "empty" and self.cansimage[key] == self.emptyCan:
-                    self.cansimage[key] = self.player2img[value]
-            print("success5")
-            # 윷놀이판 갱신
-            for key in self.cans.keys():
-                self.cans[key].setStyleSheet(self.cansimage[key])
-            print("success6")
-            # 플레이어 말이 모두 골인했을 때 종료 메시지 뜨기
-            if self.p1.goalplayer == 4:
-                self.ExitGame()
+                print("success3")
+                # 플레이어1 위치부터 맵에 갱신
+                for key, value in self.p1.mapCan.items():
+                    if value != "empty":  # 맵위에 있는 플레이어색출
+                        # 맵위에 서있는 플레이어 이름의 이미지 self.player1img[key] , value - 칸좌표
+                        self.cansimage[key] = self.player1img[value]
+                    elif value == "empty":
+                        self.cansimage[key] = self.emptyCan
+                print("success4")
+                # 플레이어2 위치 중 빈칸이 아닌 것들만 추가
+                for key, value in self.p2.mapCan.items():
+                    if value != "empty" and self.cansimage[key] == self.emptyCan:
+                        self.cansimage[key] = self.player2img[value]
+                print("success5")
+                # 윷놀이판 갱신
+                for key in self.cans.keys():
+                    self.cans[key].setStyleSheet(self.cansimage[key])
+                print("success6")
+                # 플레이어 말이 모두 골인했을 때 종료 메시지 뜨기
+                if self.p1.goalplayer == 4:
+                    self.ExitGame()
 
-            # 플레이어1의 찬스가 더이상 없으면 플레이어2로 턴 넘기기
-            if self.p1.chance == 0:
-                self.turnnum = 2
-                self.p2.chance = 1
-                self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
-                self.playerTurn.setText("현재 차례: " + self.turn[self.turnnum] + "님")
-            # 있으면 플레이어2차례 유지
+                # 플레이어1의 찬스가 더이상 없으면 플레이어2로 턴 넘기기
+                if self.p1.chance == 0:
+                    self.turnnum = 2
+                    self.p2.chance = 1
+                    self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
+                    self.playerTurn.setText("현재 차례: " + self.turn[self.turnnum] + "님")
+                # 있으면 플레이어2차례 유지
+                else:
+                    self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
+                print("success7")
             else:
-                self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
-            print("success7")
+                self.playHelper.setText(self.turn[self.turnnum] + "님 " + self.pNumChoose.currentText() + "은 사용이 불가합니다. \n다른 말을 골라주세요")
 
         elif self.turnnum == 2:
-            # 말 이동, 업기, 잡기 실행
-            movedcan = self.p2.move(self.players[self.pNumChoose.currentText()])
-            if movedcan != "goal":
-                self.japgi(movedcan)
-            print("success2")
-            # 플레이어1과 플레이어2의 말들의 위치 합쳐서 윷놀이판 갱신하기
-            # 1. 윷놀이판 초기화
-            for key in self.cansimage.keys():
-                self.cansimage[key] = self.emptyCan
-            print("success3")
-            # 플레이어1 위치부터 맵에 갱신
-            for key, value in self.p1.mapCan.items():
-                if value != "empty":  # 맵위에 있는 플레이어색출
-                    # 맵위에 서있는 플레이어 이름의 이미지 self.player1img[key] , value - 칸좌표
-                    self.cansimage[key] = self.player1img[value]
-                elif value == "empty":
+            # 현재 이동시킬 말이 이동이 가능한지 확인
+            if self.usefindP(inputplayer):
+                # 말 이동, 업기, 잡기 실행
+                movedcan = self.p2.move(inputplayer)
+                if movedcan != "goal" and movedcan != "no":
+                    self.japgi(movedcan)
+                print("success2")
+                # 플레이어1과 플레이어2의 말들의 위치 합쳐서 윷놀이판 갱신하기
+                # 1. 윷놀이판 초기화
+                for key in self.cansimage.keys():
                     self.cansimage[key] = self.emptyCan
-            print("success4")
-            # 플레이어2 위치 중 빈칸이 아닌 것들만 추가
-            # 플레이해보니 플레이어2의 말이 골인했을 때 여기서 막힘
-            for key, value in self.p2.mapCan.items():
-                if value != "empty" and self.cansimage[key] == self.emptyCan:
-                    self.cansimage[key] = self.player2img[value]
-            print("success5")
-            # 윷놀이판 갱신
-            for key in self.cans.keys():
-                self.cans[key].setStyleSheet(self.cansimage[key])
-            print("success6")
-            # 플레이어 말이 모두 골인했을 때 종료 메시지 뜨기
-            if self.p2.goalplayer == 4:
-                self.ExitGame()
+                print("success3")
+                # 플레이어1 위치부터 맵에 갱신
+                for key, value in self.p1.mapCan.items():
+                    if value != "empty":  # 맵위에 있는 플레이어색출
+                        # 맵위에 서있는 플레이어 이름의 이미지 self.player1img[key] , value - 칸좌표
+                        self.cansimage[key] = self.player1img[value]
+                    elif value == "empty":
+                        self.cansimage[key] = self.emptyCan
+                print("success4")
+                # 플레이어2 위치 중 빈칸이 아닌 것들만 추가
+                # 플레이해보니 플레이어2의 말이 골인했을 때 여기서 막힘
+                for key, value in self.p2.mapCan.items():
+                    if value != "empty" and self.cansimage[key] == self.emptyCan:
+                        self.cansimage[key] = self.player2img[value]
+                print("success5")
+                # 윷놀이판 갱신
+                for key in self.cans.keys():
+                    self.cans[key].setStyleSheet(self.cansimage[key])
+                print("success6")
+                # 플레이어 말이 모두 골인했을 때 종료 메시지 뜨기
+                if self.p2.goalplayer == 4:
+                    self.ExitGame()
 
-            # 플레이어2의 찬스가 더이상 없으면 플레이어1로 턴 넘기기
-            if self.p2.chance == 0:
-                self.turnnum = 1
-                self.p1.chance = 1
-                self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
-                self.playerTurn.setText("현재 차례: " + self.turn[self.turnnum] + "님")
-            # 있으면 플레이어2차례 유지
+                # 플레이어2의 찬스가 더이상 없으면 플레이어1로 턴 넘기기
+                if self.p2.chance == 0:
+                    self.turnnum = 1
+                    self.p1.chance = 1
+                    self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
+                    self.playerTurn.setText("현재 차례: " + self.turn[self.turnnum] + "님")
+                # 있으면 플레이어2차례 유지
+                else:
+                    self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
+                print("success7")
             else:
-                self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
-            print("success7")
+                self.playHelper.setText(self.turn[self.turnnum] + "님 " + self.pNumChoose.currentText() + "은 사용이 불가합니다. \n다른 말을 골라주세요")
 
     # 윷던지기 함수
     def randomYutButtonClicked(self):
@@ -261,7 +274,6 @@ class WindowClass(QMainWindow, formGame):
                                          , self.turn[self.turnnum]
                                          , '다시시작 : Yes, 종료 : No'
                                          , QMessageBox.Ok | QMessageBox.No)
-
         if result == QMessageBox.Ok:
             self.startGame()
         else:
@@ -277,6 +289,18 @@ class WindowClass(QMainWindow, formGame):
                     for k, v in self.p2.mapCan.items():
                         if key == v:
                             self.p2.mapCan[k] = "empty"
+                    for a in range(1, 5):
+                        if key.find(str(a)) != -1:
+                            for i in self.p2.unusable:
+                                if i.find(str(a)) != -1:
+                                    if len(i) > 7:
+                                        try:
+                                            self.p2.unusable.remove(i)
+                                            self.p2.usable.append(i)
+                                        except: continue
+                                    else: self.p2.unusable.append(i)
+                    self.p2.usable = list(set(self.p2.usable))
+                    self.p2.unusable = list(set(self.p2.unusable))
         # 플레이어2의 턴일 경우 플레이어1의 로케이션과 플레이어2 로케이션이 겹치지는지 확인 후 겹치면 플레이어1 해당 로케이션을 초기화
         elif self.turnnum == 2:
             for key, value in self.p1.playerLocation.items():
@@ -286,6 +310,31 @@ class WindowClass(QMainWindow, formGame):
                     for k, v in self.p1.mapCan.items():
                         if key == v:
                             self.p1.mapCan[k] = "empty"
+                    for a in range(1, 5):
+                        if key.find(str(a)) != -1:
+                            for i in self.p1.unusable:
+                                if i.find(str(a)) != -1:
+                                    if len(i) > 7:
+                                        try:
+                                            self.p1.unusable.remove(i)
+                                            self.p1.usable.append(i)
+                                        except:
+                                            continue
+                                    else:
+                                        self.p1.unusable.append(i)
+                    self.p1.usable = list(set(self.p1.usable))
+                    self.p1.unusable = list(set(self.p1.unusable))
+
+    def usefindP(self, inputplayer):
+        if self.turnnum == 1:
+            for i in self.p1.usable:
+                if inputplayer == i:
+                    return True
+        if self.turnnum == 2:
+            for i in self.p2.usable:
+                if inputplayer == i:
+                    return True
+        return False
 
 
 

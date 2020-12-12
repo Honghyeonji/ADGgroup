@@ -17,6 +17,9 @@ class Player:
         self.resultYut = ''  # 도개걸윷모낙빽도 결과 문자열로 저장
         self.goalplayer = 0  # 골인한 말의 수 - main.py에서 move이벤트 한 후에 goal판정하는 데에 쓰일 변수
         self.chance = 0  # 윷 던질 수 있는 횟수
+        self.usable = ["player1", "player2", "player3", "player4"]
+        self.unusable = ["player12", "player13", "player14", "player23",
+                         "player24", "player34", "player123", "player124", "player134", "player234", "player1234"]
 
         self.mapCan = {'11': "empty", '12': "empty", '13': "empty", '14': "empty", '15': "empty",
                        '21': "empty", '22': "empty", '23': "empty", '24': "empty", '25': "empty",
@@ -60,6 +63,9 @@ class Player:
         self.resultYut = ''
         self.goalplayer = 0
         self.chance = 0
+        self.usable = ["player1", "player2", "player3", "player4"]
+        self.unusable = ["player12", "player13", "player14", "player23",
+                       "player24", "player34", "player123", "player124", "player134", "player234", "player1234"]
 
         for key in self.playerLocation.keys():
             self.playerLocation[key] = "noLocation"
@@ -90,24 +96,25 @@ class Player:
         elif self.yutRandoms[resultNum] == 4:
             self.resultYut = '윷'
             self.pYut = 4
-            self.chance +=1
+            self.chance += 1
         elif self.yutRandoms[resultNum] == 5:
             self.resultYut = '모'
             self.pYut = 5
-            self.chance +=1
+            self.chance += 1
         self.chance -= 1
-
 
     # 말 움직이는 함수
     def move(self, inputplayer):  # 라이벌로케이션은 이대로 말 잡기에서 수정되어서 리턴될 것임
 
         # 빽도였을 경우와 낙일경우도 추가해야함
-
         oldplayer = self.playerLocation[inputplayer]  # 원래 말이 서있던 위치
         nowplayer = self.playerLocation[inputplayer]  # 현재 말이 어느 위치에 서있는지
         if nowplayer == "noLocation":
             if self.pYut > 0:
                 nowplayer = str(10 + self.pYut)
+                self.changeMovemode(inputplayer)
+            else:
+                return "no"
         # 외곽선 이동, 1, 2번 줄인데 모서리에 안서있는 경우(모서리에 서있으면 대각전 진입) 혹은 3, 4번 줄일 경우
         # nowplayer는 현재 말의 위치라서 "OO" 형식, 첫번째 숫자는 몇번째 선에 있는지, 두번째 숫자는 그 선의 몇 번째 칸에 있는지를 표현
         elif ((1 <= int(nowplayer[0]) <= 2) and (int(nowplayer[1]) < 5)) or (3 <= int(nowplayer[0]) <= 4):
@@ -225,6 +232,7 @@ class Player:
 
         # 말업기가 됐을 경우 현재플레이어말 갱신,
         inputplayer = self.upgi(inputplayer, nowplayer)
+        self.changeMovemode(inputplayer)
 
         if oldplayer != "noLocation":
             self.mapCan[oldplayer] = "empty"
@@ -359,7 +367,6 @@ class Player:
                             return mal
         return mal
 
-
     # 플레이어말의 수에 따라(업고있는 말일 수 있으니) 골한 플레이어 추가
     def goal(self, inputplayer):
         if len(inputplayer[6:]) == 1:
@@ -371,10 +378,23 @@ class Player:
         elif len(inputplayer[6:]) == 4:
             self.goalplayer += 4
 
+        for a in range(1, 5):
+            if inputplayer.find(str(a)) != -1:
+                for i in self.usable:
+                    if i.find(str(a)) != -1:
+                        self.unusable.append(i)
+                        try: self.usable.remove(i)
+                        except: continue
+        self.unusable = list(set(self.unusable))
 
-# p1 = Player()
-# p1.chance += 1
-# p1.throw()
-# movedcan = p1.move(input())
-# print(p1.resultYut)
-# print(movedcan)
+    def changeMovemode(self, inputplayer):
+        for a in range(1, 5):
+            if inputplayer.find(str(a)) != -1:
+                for i in self.usable:
+                    if i.find(str(a)) != -1:
+                        self.unusable.append(i)
+                        try: self.usable.remove(i)
+                        except: continue
+        self.unusable = list(set(self.unusable))
+        self.unusable.remove(inputplayer)
+        self.usable.append(inputplayer)
