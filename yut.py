@@ -51,11 +51,8 @@ class Player:
                 self.yutRandoms.append(0)  # 낙
             elif i < 95:
                 self.yutRandoms.append(4)  # 윷
-                self.chance += 1
             else:
                 self.yutRandoms.append(5)  # 모
-                self.chance += 1
-            self.chance -= 1
 
     def reset(self):
         self.pYut = 0
