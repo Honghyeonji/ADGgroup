@@ -275,6 +275,19 @@ class WindowClass(QMainWindow, formGame):
                         self.p2.chance = 1
                     self.playerTurn.setText("현재 차례: " + self.turn[self.turnnum] + "님")
                     self.playHelper.setText(self.turn[self.turnnum]+"님 윷을 던져주세요.")
+                # 빽도일 경우
+                elif self.p1.pYut == -1:
+                    # 말이 맵위에 있는지 확인
+                    for k, v in self.p1.playerLocation.items():
+                        if v != "noLocation":
+                            self.playHelper.setText(self.turn[self.turnnum] + "님 말을 이동시켜주세요")
+                            return
+                    # 말이 맵위에 없으면 남은 찬스가 있는지 확인하고 없으면 턴 넘기기 있으면 다시 윷 던지기
+                    if self.p1.chance == 0:
+                        self.turnnum = 2
+                        self.p2.chance = 1
+                    self.playerTurn.setText("현재 차례: " + self.turn[self.turnnum] + "님")
+                    self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
                 # 낙이 아닐 경우
                 else:
                     self.playHelper.setText(self.turn[self.turnnum]+"님 말을 이동시켜주세요")
@@ -284,6 +297,19 @@ class WindowClass(QMainWindow, formGame):
                 self.p2.throw()
                 self.yutResult.setText(self.p2.name + "님의 윷 : " + self.p2.resultYut)
                 if self.p2.pYut == 0:
+                    if self.p2.chance == 0:
+                        self.turnnum = 1
+                        self.p1.chance = 1
+                    self.playerTurn.setText("현재 차례: " + self.turn[self.turnnum] + "님")
+                    self.playHelper.setText(self.turn[self.turnnum] + "님 윷을 던져주세요.")
+                    # 빽도일 경우
+                elif self.p2.pYut == -1:
+                    # 말이 맵위에 있는지 확인
+                    for k, v in self.p2.playerLocation.items():
+                        if v != "noLocation":
+                            self.playHelper.setText(self.turn[self.turnnum] + "님 말을 이동시켜주세요")
+                            return
+                    # 말이 맵위에 없으면 남은 찬스가 있는지 확인하고 없으면 턴 넘기기 있으면 다시 윷 던지기
                     if self.p2.chance == 0:
                         self.turnnum = 1
                         self.p1.chance = 1

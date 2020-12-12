@@ -101,9 +101,7 @@ class Player:
         self.chance -= 1
 
     # 말 움직이는 함수
-    def move(self, inputplayer):  # 라이벌로케이션은 이대로 말 잡기에서 수정되어서 리턴될 것임
-
-        # 빽도였을 경우와 낙일경우도 추가해야함
+    def move(self, inputplayer):
         oldplayer = self.playerLocation[inputplayer]  # 원래 말이 서있던 위치
         nowplayer = self.playerLocation[inputplayer]  # 현재 말이 어느 위치에 서있는지
         if nowplayer == "noLocation":
