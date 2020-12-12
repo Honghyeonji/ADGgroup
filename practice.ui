@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1600</width>
+    <width>1595</width>
     <height>800</height>
    </rect>
   </property>
@@ -134,7 +134,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>760</x>
-     <y>540</y>
+     <y>670</y>
      <width>381</width>
      <height>41</height>
     </rect>
@@ -150,16 +150,16 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>1180</x>
-     <y>40</y>
+     <y>20</y>
      <width>381</width>
-     <height>731</height>
+     <height>711</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 20pt &quot;남양주 다산 M&quot;;</string>
    </property>
    <property name="text">
-    <string>게임방법</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;원활한 진행을 위해 버튼 밑에 뜨는 게임 진행 안내에 따라 &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;게임을 진행해주시길 바랍니다.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;게임 방법&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;윷던지기 버튼을 누르면 빽도, 낙, 도, 개, 걸, 윷, 모가 &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;랜덤으로 뜨게 됩니다.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;순서에 따라 -1, 0, 1, 2, 3, 4, 5칸 &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;이동이 가능합니다.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;이동시킬 말을 자신의 닉네임 옆에 있는 선택 창에서 선택한 후 &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;말이동 버튼을 누르면 선택한 말이 이동하게 됩니다.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;자신의 말은 업을 수 있고, 상대의 말은 잡을 수 있습니다.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;윷던지기 결과가 윷, 모가 뜨거나 &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;상대의 말을 잡았을 경우에는 윷을 한 번 더 던질 수 있습니다.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;골인시킨 말은 더는 사용이 불가하며 &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;4개의 말을 먼저 골인시킨 사람이 승자가 됩니다.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">
@@ -759,7 +759,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>760</x>
-     <y>590</y>
+     <y>620</y>
      <width>391</width>
      <height>41</height>
     </rect>
@@ -775,7 +775,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>760</x>
-     <y>640</y>
+     <y>530</y>
      <width>391</width>
      <height>81</height>
     </rect>

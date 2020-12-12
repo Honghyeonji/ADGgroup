@@ -102,19 +102,17 @@ font: 64pt &quot;남양주 다산 M&quot;;</string>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>50</y>
+     <x>300</x>
+     <y>10</y>
      <width>791</width>
-     <height>131</height>
+     <height>201</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 20pt &quot;남양주 다산 M&quot;;</string>
    </property>
    <property name="text">
-    <string>닉네임은 총 10자까지 가능합니다. 
-10자가 넘어가거나 닉네임을 입력하지 않고 접속할 시 
-player1은 쿠민이, player2는 국냥이로 기본 닉네임이 적용됩니다.</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;닉네임은 총 10자까지 가능합니다. &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;10자가 넘어가거나 닉네임을 입력하지 않고 접속할 시 &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;player1은 쿠민이, player2는 국냥이로 기본 닉네임이 적용됩니다.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;접속 후 게임소리가 큽니다. 미리 소리를 줄여주시길 바랍니다.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>

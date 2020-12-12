@@ -102,9 +102,11 @@ class WindowClass(QMainWindow, formGame):
         r = inputchang.showModel()
         if r:
             self.p1.name = inputchang.inputName.text() if inputchang.inputName.text() != "닉네임을 입력하세요" and \
-                                                          len(inputchang.inputName.text()) <= 10 else "쿠민이"
+                                                          len(inputchang.inputName.text()) <= 10 \
+                                                          and inputchang.inputName.text() != "" else "쿠민이"
             self.player1Name.setText(self.p1.name)
             self.p2.name = inputchang.inputName_2.text() if inputchang.inputName_2.text() != "닉네임을 입력하세요" and \
+                                                            inputchang.inputName_2.text() != "" and \
                                                             len(inputchang.inputName.text()) <= 10 else "국냥이"
             self.player2Name.setText(self.p2.name)
 
