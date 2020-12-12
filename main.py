@@ -1,8 +1,4 @@
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QMessageBox
-from PyQt5.QtWidgets import QLayout, QGridLayout
-from PyQt5.QtWidgets import QTextEdit, QLineEdit, QToolButton, QLabel
-from PyQt5.QtGui import *
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt5 import uic
 import random
 import sys
@@ -105,9 +101,9 @@ class WindowClass(QMainWindow, formGame):
         inputchang = Nameinput.NameInput()
         r = inputchang.showModel()
         if r:
-            self.p1.name = inputchang.inputName.text() if inputchang.inputName.text() != "닉네임을 입력하세요" else "쿠민이"
+            self.p1.name = inputchang.inputName.text() if inputchang.inputName.text() != "닉네임을 입력하세요" and len(inputchang.inputName.text()) <= 10 else "쿠민이"
             self.player1Name.setText(self.p1.name)
-            self.p2.name = inputchang.inputName_2.text() if inputchang.inputName_2.text() != "닉네임을 입력하세요" else "국냥이"
+            self.p2.name = inputchang.inputName_2.text() if inputchang.inputName_2.text() != "닉네임을 입력하세요" and len(inputchang.inputName.text()) <= 10 else "국냥이"
             self.player2Name.setText(self.p2.name)
 
         # 게임 시작 후 배경음악 재생 #Music: https://www.bensound.com
@@ -138,13 +134,14 @@ class WindowClass(QMainWindow, formGame):
 
         # 윷 던지고 말 이동하기
     def moveButtonClicked(self):
-        inputplayer = self.players[self.pNumChoose.currentText()]
         if self.turnnum == 1:
+            inputplayer = self.players[self.pNumChoose1.currentText()]
             # 현재 이동시킬 말이 이동이 가능한지 확인
             if self.usefindP(inputplayer):
                 try:
                     # 말 이동, 업기, 잡기 실행
                     movedcan = self.p1.move(inputplayer)
+                    print("success1-2")
                     if movedcan != "goal" and movedcan != "no":
                         self.japgi(movedcan)
                 except:
@@ -191,11 +188,13 @@ class WindowClass(QMainWindow, formGame):
                 self.playHelper.setText(self.turn[self.turnnum] + "님 " + self.pNumChoose.currentText() + "은 사용이 불가합니다. \n다른 말을 골라주세요")
 
         elif self.turnnum == 2:
+            inputplayer = self.players[self.pNumChoose2.currentText()]
             # 현재 이동시킬 말이 이동이 가능한지 확인
             if self.usefindP(inputplayer):
                 try:
                     # 말 이동, 업기, 잡기 실행
                     movedcan = self.p2.move(inputplayer)
+                    print("success1-2")
                     if movedcan != "goal" and movedcan != "no":
                         self.japgi(movedcan)
                 except:
@@ -279,8 +278,8 @@ class WindowClass(QMainWindow, formGame):
     # 승자 정해졌을 때 나오는 창
     def ExitGame(self):
         result = QMessageBox.information(self
-                                         , self.turn[self.turnnum]
-                                         , '다시시작 : Yes, 종료 : No'
+                                         , "게임종료"
+                                         , self.turn[self.turnnum]+"님 승리! \n다시시작 : Yes, 종료 : No"
                                          , QMessageBox.Ok | QMessageBox.No)
         if result == QMessageBox.Ok:
             self.startGame()
@@ -297,18 +296,22 @@ class WindowClass(QMainWindow, formGame):
                     for k, v in self.p2.mapCan.items():
                         if key == v:
                             self.p2.mapCan[k] = "empty"
+                    print("j1")
+                    # usable, unusable 갱신
+                    self.p2.unusable.append(key)
+                    self.p2.usable.remove(key)
                     for a in range(1, 5):
+                        print("j2")
                         if key.find(str(a)) != -1:
-                            for i in self.p2.unusable:
-                                if i.find(str(a)) != -1:
-                                    if len(i) > 7:
-                                        try:
-                                            self.p2.unusable.remove(i)
-                                            self.p2.usable.append(i)
-                                        except: continue
-                                    else: self.p2.unusable.append(i)
+                            print("j3")
+                            try:
+                                self.p2.unusable.remove("player" + str(a))
+                                self.p2.usable.append("player" + str(a))
+                            except:
+                                continue
                     self.p2.usable = list(set(self.p2.usable))
                     self.p2.unusable = list(set(self.p2.unusable))
+                    print("j7")
         # 플레이어2의 턴일 경우 플레이어1의 로케이션과 플레이어2 로케이션이 겹치지는지 확인 후 겹치면 플레이어1 해당 로케이션을 초기화
         elif self.turnnum == 2:
             for key, value in self.p1.playerLocation.items():
@@ -318,20 +321,21 @@ class WindowClass(QMainWindow, formGame):
                     for k, v in self.p1.mapCan.items():
                         if key == v:
                             self.p1.mapCan[k] = "empty"
+                    print("j1")
+                    # usable, unusable 갱신
+                    self.p1.unusable.append(key)
+                    self.p1.usable.remove(key)
                     for a in range(1, 5):
+                        print("j2")
                         if key.find(str(a)) != -1:
-                            for i in self.p1.unusable:
-                                if i.find(str(a)) != -1:
-                                    if len(i) > 7:
-                                        try:
-                                            self.p1.unusable.remove(i)
-                                            self.p1.usable.append(i)
-                                        except:
-                                            continue
-                                    else:
-                                        self.p1.unusable.append(i)
+                            print("j3")
+                            try:
+                                self.p1.unusable.remove("player" + str(a))
+                                self.p1.usable.append("player" + str(a))
+                            except: continue
                     self.p1.usable = list(set(self.p1.usable))
                     self.p1.unusable = list(set(self.p1.unusable))
+                    print("j7")
 
     def usefindP(self, inputplayer):
         if self.turnnum == 1:

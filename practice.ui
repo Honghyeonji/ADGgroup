@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Yutnori</class>
+ <widget class="QDialog" name="Yutnori">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -20,8 +20,8 @@
    <property name="geometry">
     <rect>
      <x>750</x>
-     <y>40</y>
-     <width>401</width>
+     <y>70</y>
+     <width>251</width>
      <height>41</height>
     </rect>
    </property>
@@ -36,8 +36,8 @@
    <property name="geometry">
     <rect>
      <x>750</x>
-     <y>220</y>
-     <width>401</width>
+     <y>250</y>
+     <width>251</width>
      <height>41</height>
     </rect>
    </property>
@@ -68,7 +68,7 @@
    <property name="geometry">
     <rect>
      <x>750</x>
-     <y>260</y>
+     <y>290</y>
      <width>400</width>
      <height>120</height>
     </rect>
@@ -84,7 +84,7 @@
    <property name="geometry">
     <rect>
      <x>750</x>
-     <y>80</y>
+     <y>110</y>
      <width>400</width>
      <height>120</height>
     </rect>
@@ -99,9 +99,9 @@
   <widget class="QPushButton" name="moveButton">
    <property name="geometry">
     <rect>
-     <x>920</x>
-     <y>390</y>
-     <width>230</width>
+     <x>750</x>
+     <y>430</y>
+     <width>191</width>
      <height>90</height>
     </rect>
    </property>
@@ -116,9 +116,9 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
   <widget class="QPushButton" name="randomYut">
    <property name="geometry">
     <rect>
-     <x>920</x>
-     <y>480</y>
-     <width>230</width>
+     <x>960</x>
+     <y>430</y>
+     <width>191</width>
      <height>90</height>
     </rect>
    </property>
@@ -134,7 +134,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>760</x>
-     <y>590</y>
+     <y>540</y>
      <width>381</width>
      <height>41</height>
     </rect>
@@ -190,7 +190,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>765</x>
-     <y>100</y>
+     <y>130</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -203,7 +203,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>860</x>
-     <y>100</y>
+     <y>130</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -216,7 +216,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>955</x>
-     <y>100</y>
+     <y>130</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -229,7 +229,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>1050</x>
-     <y>100</y>
+     <y>130</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -242,7 +242,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>1050</x>
-     <y>280</y>
+     <y>310</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -255,7 +255,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>765</x>
-     <y>280</y>
+     <y>310</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -268,7 +268,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>860</x>
-     <y>280</y>
+     <y>310</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -281,7 +281,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>955</x>
-     <y>280</y>
+     <y>310</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -667,13 +667,13 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QComboBox" name="pNumChoose">
+  <widget class="QComboBox" name="pNumChoose2">
    <property name="geometry">
     <rect>
-     <x>750</x>
-     <y>400</y>
+     <x>1000</x>
+     <y>240</y>
      <width>151</width>
-     <height>51</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -699,12 +699,67 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
      <string>4번 말</string>
     </property>
    </item>
+   <item>
+    <property name="text">
+     <string>12번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>13번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>14번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>23번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>24번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>34번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>123번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>124번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>134번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>234번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>1234번 말</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="playerTurn">
    <property name="geometry">
     <rect>
      <x>760</x>
-     <y>640</y>
+     <y>590</y>
      <width>391</width>
      <height>41</height>
     </rect>
@@ -720,7 +775,7 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="geometry">
     <rect>
      <x>760</x>
-     <y>690</y>
+     <y>640</y>
      <width>391</width>
      <height>81</height>
     </rect>
@@ -731,6 +786,94 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
    <property name="text">
     <string>게임진행도우미</string>
    </property>
+  </widget>
+  <widget class="QComboBox" name="pNumChoose1">
+   <property name="geometry">
+    <rect>
+     <x>1000</x>
+     <y>60</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 20pt &quot;남양주 다산 M&quot;;</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>1번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>2번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>3번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>4번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>12번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>13번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>14번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>23번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>24번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>34번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>123번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>124번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>134번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>234번 말</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>1234번 말</string>
+    </property>
+   </item>
   </widget>
   <zorder>background</zorder>
   <zorder>player1Name</zorder>
@@ -780,9 +923,10 @@ font: 25pt &quot;남양주 다산 B&quot;;</string>
   <zorder>can7_2</zorder>
   <zorder>can6_2</zorder>
   <zorder>can6_1</zorder>
-  <zorder>pNumChoose</zorder>
+  <zorder>pNumChoose2</zorder>
   <zorder>playerTurn</zorder>
   <zorder>playHelper</zorder>
+  <zorder>pNumChoose1</zorder>
  </widget>
  <resources/>
  <connections/>

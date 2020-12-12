@@ -62,7 +62,7 @@ class Player:
         self.chance = 0
         self.usable = ["player1", "player2", "player3", "player4"]
         self.unusable = ["player12", "player13", "player14", "player23",
-                       "player24", "player34", "player123", "player124", "player134", "player234", "player1234"]
+                         "player24", "player34", "player123", "player124", "player134", "player234", "player1234"]
 
         for key in self.playerLocation.keys():
             self.playerLocation[key] = "noLocation"

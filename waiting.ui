@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>nicknameInput</class>
+ <widget class="QDialog" name="nicknameInput">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1600</width>
-    <height>800</height>
+    <width>1313</width>
+    <height>667</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,10 +19,10 @@
   <widget class="QLineEdit" name="inputName">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>300</y>
-     <width>631</width>
-     <height>180</height>
+     <x>70</x>
+     <y>280</y>
+     <width>891</width>
+     <height>131</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -36,10 +36,10 @@ font: 64pt &quot;남양주 다산 M&quot;;</string>
   <widget class="QPushButton" name="goGameButton">
    <property name="geometry">
     <rect>
-     <x>930</x>
-     <y>510</y>
-     <width>280</width>
-     <height>180</height>
+     <x>979</x>
+     <y>479</y>
+     <width>231</width>
+     <height>131</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -53,10 +53,10 @@ font: 48pt &quot;남양주 다산 M&quot;;</string>
   <widget class="QLineEdit" name="inputName_2">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>510</y>
-     <width>631</width>
-     <height>180</height>
+     <x>70</x>
+     <y>480</y>
+     <width>891</width>
+     <height>131</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -65,6 +65,56 @@ font: 64pt &quot;남양주 다산 M&quot;;</string>
    </property>
    <property name="text">
     <string>닉네임을 입력하세요</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>230</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 18pt &quot;남양주 다산 M&quot;;</string>
+   </property>
+   <property name="text">
+    <string>player1 닉네임 입력칸</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>430</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 18pt &quot;남양주 다산 M&quot;;</string>
+   </property>
+   <property name="text">
+    <string>player2 닉네임 입력칸</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>50</y>
+     <width>791</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 20pt &quot;남양주 다산 M&quot;;</string>
+   </property>
+   <property name="text">
+    <string>닉네임은 총 10자까지 가능합니다. 
+10자가 넘어가거나 닉네임을 입력하지 않고 접속할 시 
+player1은 쿠민이, player2는 국냥이로 기본 닉네임이 적용됩니다.</string>
    </property>
   </widget>
  </widget>
