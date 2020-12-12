@@ -190,7 +190,7 @@ class Player:
                     elif nowplayer[0] == "6":  # 6번째줄(왼쪽 위 대각선)에 있던 플레이어말은 골인
                         self.playerLocation[inputplayer] = "noLocation"
                         self.goal(inputplayer)
-                        self.mapCan[nowplayer] = "empty"
+                        self.mapCan[oldplayer] = "empty"
                         return "goal"
 
             # 플레이어말이 메인칸 후 대각선에 있을 경우 (7번째, 8번째 줄에 있을 경우)
@@ -210,7 +210,7 @@ class Player:
                     if nowplayer[0] == "8":  # 8번째줄(오른쪽 아래 대각선)에 있던 플레이어 말은 골인
                         self.playerLocation[inputplayer] = "noLocation"
                         self.goal(inputplayer)
-                        self.mapCan[nowplayer] = "empty"
+                        self.mapCan[oldplayer] = "empty"
                         return "goal"
 
             elif nowplayer == "90":  # 정가운데 칸에 있을 경우
@@ -221,7 +221,7 @@ class Player:
                     elif int(nowplayer[1]) > 3:  # 골인
                         self.playerLocation[inputplayer] = "noLocation"
                         self.goal(inputplayer)
-                        self.mapCan[nowplayer] = "empty"
+                        self.mapCan[oldplayer] = "empty"
                         return "goal"
                 # 빽도
                 elif self.pYut == -1:
