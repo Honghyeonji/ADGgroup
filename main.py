@@ -7,6 +7,10 @@ import Nameinput
 import pygame
 
 pygame.mixer.init()
+#효과음
+wow = pygame.mixer.Sound('wow1.wav')
+goal = pygame.mixer.Sound('win.wav')
+japgi = pygame.mixer.Sound('japgi.wav')
 
 port = 2020
 
@@ -153,6 +157,8 @@ class WindowClass(QMainWindow, formGame):
                         print("success1-2")
                         if movedcan != "goal" and movedcan != "no":
                             self.japgi(movedcan)
+                        elif movedcan == "goal":
+                            pygame.mixer.Sound.play(goal)
                     except:
                         self.playHelper.setText("오류가 생겼습니다. \n다시 이동버튼을 눌러주세요")
                         return
@@ -211,6 +217,8 @@ class WindowClass(QMainWindow, formGame):
                         print("success1-2")
                         if movedcan != "goal" and movedcan != "no":
                             self.japgi(movedcan)
+                        elif movedcan == "goal":
+                            pygame.mixer.Sound.play(goal)
                     except:
                         self.playHelper.setText("오류가 생겼습니다. \n다시 이동버튼을 눌러주세요")
                         return
@@ -266,6 +274,8 @@ class WindowClass(QMainWindow, formGame):
         if self.turnnum == 1:
             if self.p1.chance >= 1:
                 self.p1.throw()
+                if self.p1.resultYut == '윷' or self.p1.resultYut == '모':
+                    pygame.mixer.Sound.play(wow)
                 self.yutResult.setText(self.p1.name + "님의 윷 : " + self.p1.resultYut)
                 # 낙일경우
                 if self.p1.pYut == 0:
@@ -295,6 +305,8 @@ class WindowClass(QMainWindow, formGame):
         elif self.turnnum == 2:
             if self.p2.chance >= 1:
                 self.p2.throw()
+                if self.p2.resultYut == '윷' or self.p2.resultYut == '모':
+                    pygame.mixer.Sound.play(wow)
                 self.yutResult.setText(self.p2.name + "님의 윷 : " + self.p2.resultYut)
                 if self.p2.pYut == 0:
                     if self.p2.chance == 0:
@@ -335,6 +347,7 @@ class WindowClass(QMainWindow, formGame):
         if self.turnnum == 1:
             for key, value in self.p2.playerLocation.items():
                 if nowLocation == value:
+                    pygame.mixer.Sound.play(japgi)
                     self.p2.playerLocation[key] = "noLocation"
                     self.p1.chance = self.p1.chance + 1
                     for k, v in self.p2.mapCan.items():
@@ -360,6 +373,7 @@ class WindowClass(QMainWindow, formGame):
         elif self.turnnum == 2:
             for key, value in self.p1.playerLocation.items():
                 if nowLocation == value:
+                    pygame.mixer.Sound.play(japgi)
                     self.p1.playerLocation[key] = "noLocation"
                     self.p2.chance = self.p2.chance + 1
                     for k, v in self.p1.mapCan.items():
