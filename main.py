@@ -142,10 +142,14 @@ class WindowClass(QMainWindow, formGame):
         if self.turnnum == 1:
             # 현재 이동시킬 말이 이동이 가능한지 확인
             if self.usefindP(inputplayer):
-                # 말 이동, 업기, 잡기 실행
-                movedcan = self.p1.move(inputplayer)
-                if movedcan != "goal" and movedcan != "no":
-                    self.japgi(movedcan)
+                try:
+                    # 말 이동, 업기, 잡기 실행
+                    movedcan = self.p1.move(inputplayer)
+                    if movedcan != "goal" and movedcan != "no":
+                        self.japgi(movedcan)
+                except:
+                    self.playHelper.setText("오류가 생겼습니다. \n다시 이동버튼을 눌러주세요")
+                    return
                 print("success2")
                 # 플레이어1과 플레이어2의 말들의 위치 합쳐서 윷놀이판 갱신하기
                 # 1. 윷놀이판 초기화
@@ -189,10 +193,14 @@ class WindowClass(QMainWindow, formGame):
         elif self.turnnum == 2:
             # 현재 이동시킬 말이 이동이 가능한지 확인
             if self.usefindP(inputplayer):
-                # 말 이동, 업기, 잡기 실행
-                movedcan = self.p2.move(inputplayer)
-                if movedcan != "goal" and movedcan != "no":
-                    self.japgi(movedcan)
+                try:
+                    # 말 이동, 업기, 잡기 실행
+                    movedcan = self.p2.move(inputplayer)
+                    if movedcan != "goal" and movedcan != "no":
+                        self.japgi(movedcan)
+                except:
+                    self.playHelper.setText("오류가 생겼습니다. \n다시 이동버튼을 눌러주세요")
+                    return
                 print("success2")
                 # 플레이어1과 플레이어2의 말들의 위치 합쳐서 윷놀이판 갱신하기
                 # 1. 윷놀이판 초기화

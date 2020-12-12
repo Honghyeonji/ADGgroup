@@ -378,6 +378,7 @@ class Player:
         elif len(inputplayer[6:]) == 4:
             self.goalplayer += 4
 
+        # 골한 말은 사용 불가로 바꾸기
         for a in range(1, 5):
             if inputplayer.find(str(a)) != -1:
                 for i in self.usable:
